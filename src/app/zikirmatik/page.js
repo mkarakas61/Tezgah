@@ -9,6 +9,7 @@ export default function Zikirmatik() {
 	const [target, setTarget] = useState(33);
 	const [savedCounts, setSavedCounts] = useState([]);
 	const [currentZikir, setCurrentZikir] = useState('Sübhanallah');
+	const [ozelZikirText, setOzelZikirText] = useState('Özel Zikir');
 
 	// Zikir tipleri
 	const zikirTipleri = [
@@ -17,7 +18,7 @@ export default function Zikirmatik() {
 		{ name: 'Allahu Ekber', defaultTarget: 33 },
 		{ name: 'La ilahe illallah', defaultTarget: 100 },
 		{ name: 'Estağfirullah', defaultTarget: 100 },
-		{ name: 'Özel Zikir', defaultTarget: 0 },
+		{ name: ozelZikirText, defaultTarget: 0, isOzel: true },
 	];
 
 	useEffect(() => {
@@ -57,7 +58,6 @@ export default function Zikirmatik() {
 		const newSavedCount = {
 			zikir: currentZikir,
 			count: count,
-			target: target,
 			date: new Date().toLocaleString('tr-TR'),
 		};
 
@@ -75,6 +75,14 @@ export default function Zikirmatik() {
 		setCurrentZikir(zikir.name);
 		setTarget(zikir.defaultTarget);
 		reset();
+	};
+
+	const handleOzelZikirChange = (newText) => {
+		setOzelZikirText(newText);
+		// Zikir tiplerini güncelle
+		if (currentZikir === 'Özel Zikir' || currentZikir === ozelZikirText) {
+			setCurrentZikir(newText);
+		}
 	};
 
 	return (
@@ -98,6 +106,22 @@ export default function Zikirmatik() {
 					</button>
 				))}
 			</div>
+
+			{currentZikir === ozelZikirText && (
+				<div className={styles.ozelZikirContainer}>
+					<label htmlFor="ozelZikir" className={styles.ozelZikirLabel}>
+						Özel Zikir Metni: 
+					</label>
+					<input 
+						id="ozelZikir"
+						type="text"
+						className={styles.ozelZikirInput}
+						value={ozelZikirText}
+						onChange={(e) => handleOzelZikirChange(e.target.value)}
+						placeholder="Özel zikir metninizi buraya yazın"
+					/>
+				</div>
+			)}
 
 			<div className={styles.targetContainer}>
 				<label htmlFor="target" className={styles.targetLabel}>
@@ -154,7 +178,7 @@ export default function Zikirmatik() {
 								<div key={index} className={styles.savedCountItem}>
 									<span className={styles.savedCountZikir}>{saved.zikir}</span>
 									<span className={styles.savedCountValue}>
-										{saved.count}/{saved.target}
+										{saved.count}
 									</span>
 									<span className={styles.savedCountDate}>{saved.date}</span>
 								</div>

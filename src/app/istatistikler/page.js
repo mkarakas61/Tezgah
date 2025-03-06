@@ -170,7 +170,7 @@ export default function Istatistikler() {
 								<div key={index} className={styles.recordItem}>
 									<span className={styles.recordName}>{record.zikir}</span>
 									<span className={styles.recordCount}>
-										{record.count}/{record.target}
+										{record.count}
 									</span>
 									<span className={styles.recordDate}>{record.date}</span>
 								</div>

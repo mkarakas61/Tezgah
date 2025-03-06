@@ -87,6 +87,38 @@
 	box-shadow: 0 3px 0 #5e35b1;
 }
 
+.ozelZikirContainer {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	background: white;
+	padding: 12px 20px;
+	border-radius: 30px;
+	box-shadow: 0 4px 0 #b3e5fc, 0 5px 15px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 400px;
+}
+
+.ozelZikirLabel {
+	margin-right: 10px;
+	font-size: 1.1rem;
+	color: #7c4dff;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.ozelZikirInput {
+	flex: 1;
+	padding: 8px 12px;
+	border-radius: 15px;
+	border: 2px solid #d1c4e9;
+	font-size: 1.1rem;
+	background: #f3e5f5;
+	color: #673ab7;
+	font-weight: 500;
+	font-family: inherit;
+}
+
 .targetContainer {
 	display: flex;
 	align-items: center;
@@ -584,5 +616,19 @@
 
 	.savedCountValue {
 		margin: 5px 0;
+	}
+
+	.ozelZikirContainer {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 15px;
+	}
+	
+	.ozelZikirLabel {
+		margin-bottom: 8px;
+	}
+	
+	.ozelZikirInput {
+		width: 100%;
 	}
 }
