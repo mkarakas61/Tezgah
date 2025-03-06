@@ -1,0 +1,613 @@
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(to bottom, #ffebee, #e8f5e9);
+	font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+}
+
+.backLink {
+	align-self: flex-start;
+	color: #ff5722;
+	text-decoration: none;
+	margin-bottom: 20px;
+	font-weight: 600;
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s;
+	background: #fff;
+	padding: 10px 15px;
+	border-radius: 30px;
+	box-shadow: 0 4px 0 #ffab91;
+}
+
+.backLink:hover {
+	color: #f4511e;
+	transform: translateY(-3px);
+	box-shadow: 0 7px 0 #ffab91;
+}
+
+.backLink:active {
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 #ffab91;
+}
+
+.title {
+	font-size: 2.8rem;
+	margin-bottom: 0.5rem;
+	text-align: center;
+	color: #2196f3;
+	font-weight: 700;
+	text-shadow: 2px 2px 0px #bbdefb;
+	position: relative;
+}
+
+.title:after {
+	content: '📖';
+	position: absolute;
+	font-size: 1.5rem;
+	top: -10px;
+	right: -30px;
+	transform: rotate(15deg);
+}
+
+.description {
+	font-size: 1.3rem;
+	color: #673ab7;
+	margin-bottom: 2.5rem;
+	text-align: center;
+	font-weight: 500;
+	background: rgba(255, 255, 255, 0.7);
+	padding: 8px 20px;
+	border-radius: 30px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.searchBox {
+	width: 100%;
+	max-width: 500px;
+	margin-bottom: 2.5rem;
+	display: flex;
+	gap: 12px;
+	position: relative;
+}
+
+.searchBox:before {
+	content: '🔍';
+	position: absolute;
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.2rem;
+	z-index: 1;
+}
+
+.searchBox input {
+	flex: 1;
+	padding: 15px 20px 15px 50px;
+	border-radius: 30px;
+	border: 3px solid #bbdefb;
+	font-size: 1.1rem;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+	font-family: inherit;
+	transition: all 0.3s;
+}
+
+.searchBox input:focus {
+	outline: none;
+	border-color: #2196f3;
+	box-shadow: 0 5px 20px rgba(33, 150, 243, 0.2);
+}
+
+.searchButton {
+	background: #2196f3;
+	color: white;
+	border: none;
+	border-radius: 30px;
+	padding: 0 25px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s;
+	box-shadow: 0 5px 0 #1976d2;
+	font-family: inherit;
+}
+
+.searchButton:hover {
+	background: #1e88e5;
+	transform: translateY(-3px);
+	box-shadow: 0 8px 0 #1976d2;
+}
+
+.searchButton:active {
+	transform: translateY(2px);
+	box-shadow: 0 3px 0 #1976d2;
+}
+
+.categoriesWrapper {
+	width: 100%;
+	overflow-x: auto;
+	margin-bottom: 2.5rem;
+	padding-bottom: 10px;
+}
+
+.categories {
+	display: flex;
+	gap: 12px;
+	width: max-content;
+	min-width: 100%;
+}
+
+.categoryButton {
+	padding: 12px 25px;
+	border-radius: 30px;
+	border: 2px solid #e0e0e0;
+	background: white;
+	color: #7c4dff;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.3s;
+	white-space: nowrap;
+	font-family: inherit;
+	font-weight: 600;
+	box-shadow: 0 4px 0 #d1c4e9;
+}
+
+.categoryButton:hover {
+	border-color: #7c4dff;
+	background: #f3e5f5;
+	color: #6200ea;
+	transform: translateY(-3px);
+	box-shadow: 0 7px 0 #d1c4e9;
+}
+
+.categoryButton:active {
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 #d1c4e9;
+}
+
+.categoryButton.active {
+	background: #7c4dff;
+	color: white;
+	border-color: #7c4dff;
+	box-shadow: 0 4px 0 #6200ea;
+}
+
+.duaList {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin-bottom: 40px;
+}
+
+.duaCard {
+	background: white;
+	border-radius: 25px;
+	overflow: hidden;
+	box-shadow: 0 10px 0 rgba(0, 0, 0, 0.05), 0 15px 30px rgba(0, 0, 0, 0.1);
+	border: 3px solid #c5cae9;
+	transform-style: preserve-3d;
+	perspective: 1000px;
+	transition: all 0.3s;
+}
+
+.duaCard:hover {
+	transform: translateY(-10px) rotateX(5deg);
+	box-shadow: 0 15px 0 rgba(0, 0, 0, 0.05), 0 25px 40px rgba(0, 0, 0, 0.1);
+	border-color: #7986cb;
+}
+
+.duaTitle {
+	background: #3f51b5;
+	color: white;
+	padding: 20px;
+	margin: 0;
+	font-size: 1.6rem;
+	position: relative;
+	text-align: center;
+	text-shadow: 1px 1px 0 #303f9f;
+}
+
+.duaTitle:before {
+	content: '✨';
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.duaTitle:after {
+	content: '✨';
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.duaContent {
+	padding: 25px;
+}
+
+.duaArabic {
+	font-size: 1.8rem;
+	text-align: center;
+	margin-bottom: 20px;
+	direction: rtl;
+	font-family: 'Traditional Arabic', 'Scheherazade', serif;
+	background: #e8eaf6;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+	color: #1a237e;
+	position: relative;
+	overflow: hidden;
+}
+
+.duaArabic:before,
+.duaArabic:after {
+	content: '❖';
+	position: absolute;
+	color: #c5cae9;
+	font-size: 1.2rem;
+}
+
+.duaArabic:before {
+	left: 15px;
+	top: 10px;
+}
+
+.duaArabic:after {
+	right: 15px;
+	bottom: 10px;
+}
+
+.duaOkunus,
+.duaAnlam {
+	margin-bottom: 15px;
+	font-size: 1.2rem;
+	position: relative;
+	padding-left: 30px;
+}
+
+.duaOkunus {
+	font-style: italic;
+	color: #5c6bc0;
+}
+
+.duaOkunus:before {
+	content: '🔊';
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.duaAnlam {
+	font-weight: 600;
+	color: #3949ab;
+}
+
+.duaAnlam:before {
+	content: '💭';
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.duaAciklama {
+	margin-bottom: 25px;
+	line-height: 1.7;
+	color: #555;
+	background: #f5f5f5;
+	padding: 15px;
+	border-radius: 15px;
+	border-left: 5px solid #3f51b5;
+}
+
+.duaInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+	background: #ede7f6;
+	padding: 10px 15px;
+	border-radius: 15px;
+}
+
+.duaTag {
+	background: #673ab7;
+	color: white;
+	padding: 8px 15px;
+	border-radius: 30px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	box-shadow: 0 3px 0 #4527a0;
+}
+
+.duaCount {
+	color: #5e35b1;
+	font-weight: 700;
+	font-size: 1.1rem;
+	background: white;
+	padding: 8px 15px;
+	border-radius: 30px;
+	box-shadow: 0 3px 0 #d1c4e9;
+}
+
+.duaButton {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	background: #7c4dff;
+	color: white;
+	text-align: center;
+	border-radius: 15px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.2rem;
+	transition: all 0.3s;
+	box-shadow: 0 6px 0 #6200ea;
+	position: relative;
+	overflow: hidden;
+}
+
+.duaButton:hover {
+	background: #651fff;
+	transform: translateY(-3px);
+	box-shadow: 0 9px 0 #6200ea;
+}
+
+.duaButton:active {
+	transform: translateY(3px);
+	box-shadow: 0 3px 0 #6200ea;
+}
+
+.duaButton:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		to right,
+		transparent,
+		rgba(255, 255, 255, 0.3),
+		transparent
+	);
+	transition: all 0.5s;
+}
+
+.duaButton:hover:before {
+	left: 100%;
+}
+
+.paginationContainer {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 30px;
+}
+
+.paginationButton {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	border: 2px solid #c5cae9;
+	background: white;
+	color: #3f51b5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-size: 1.1rem;
+	font-weight: 600;
+	box-shadow: 0 4px 0 #c5cae9;
+	font-family: inherit;
+}
+
+.paginationButton:hover {
+	border-color: #3f51b5;
+	background: #e8eaf6;
+	color: #1a237e;
+	transform: translateY(-3px);
+	box-shadow: 0 7px 0 #c5cae9;
+}
+
+.paginationButton:active {
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 #c5cae9;
+}
+
+.paginationButton.active {
+	background: #3f51b5;
+	color: white;
+	border-color: #3f51b5;
+	box-shadow: 0 4px 0 #1a237e;
+}
+
+@media (prefers-color-scheme: dark) {
+	.container {
+		background: linear-gradient(to bottom, #4a148c, #1a237e);
+	}
+
+	.backLink {
+		color: #ff9800;
+		background: #311b92;
+		box-shadow: 0 4px 0 #7e57c2;
+	}
+
+	.backLink:hover {
+		color: #ffb74d;
+		box-shadow: 0 7px 0 #7e57c2;
+	}
+
+	.title {
+		color: #42a5f5;
+		text-shadow: 2px 2px 0px #1565c0;
+	}
+
+	.description {
+		color: #ce93d8;
+		background: rgba(26, 35, 126, 0.7);
+	}
+
+	.searchBox input {
+		background: #1a237e;
+		border-color: #3949ab;
+		color: #e8eaf6;
+	}
+
+	.searchBox input:focus {
+		border-color: #42a5f5;
+	}
+
+	.searchButton {
+		background: #42a5f5;
+		box-shadow: 0 5px 0 #1976d2;
+	}
+
+	.searchButton:hover {
+		background: #1e88e5;
+		box-shadow: 0 8px 0 #1976d2;
+	}
+
+	.categoryButton {
+		background: #1a237e;
+		border-color: #3949ab;
+		color: #b39ddb;
+		box-shadow: 0 4px 0 #512da8;
+	}
+
+	.categoryButton:hover {
+		border-color: #7c4dff;
+		background: #311b92;
+		color: #d1c4e9;
+		box-shadow: 0 7px 0 #512da8;
+	}
+
+	.categoryButton.active {
+		background: #7c4dff;
+		border-color: #6200ea;
+		box-shadow: 0 4px 0 #4527a0;
+	}
+
+	.duaCard {
+		background: #1a237e;
+		box-shadow: 0 10px 0 rgba(0, 0, 0, 0.2), 0 15px 30px rgba(0, 0, 0, 0.3);
+		border-color: #3f51b5;
+	}
+
+	.duaCard:hover {
+		border-color: #5c6bc0;
+		box-shadow: 0 15px 0 rgba(0, 0, 0, 0.2), 0 25px 40px rgba(0, 0, 0, 0.3);
+	}
+
+	.duaTitle {
+		background: #3949ab;
+		text-shadow: 1px 1px 0 #1a237e;
+	}
+
+	.duaArabic {
+		background: #283593;
+		color: #e8eaf6;
+		box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	.duaArabic:before,
+	.duaArabic:after {
+		color: #5c6bc0;
+	}
+
+	.duaOkunus {
+		color: #9fa8da;
+	}
+
+	.duaAnlam {
+		color: #c5cae9;
+	}
+
+	.duaAciklama {
+		color: #b0bec5;
+		background: #0d47a1;
+		border-left-color: #64b5f6;
+	}
+
+	.duaInfo {
+		background: #311b92;
+	}
+
+	.duaTag {
+		background: #9c27b0;
+		box-shadow: 0 3px 0 #7b1fa2;
+	}
+
+	.duaCount {
+		color: #7e57c2;
+		background: #1a237e;
+		box-shadow: 0 3px 0 #512da8;
+	}
+
+	.duaButton {
+		background: #9c27b0;
+		box-shadow: 0 6px 0 #7b1fa2;
+	}
+
+	.duaButton:hover {
+		background: #8e24aa;
+		box-shadow: 0 9px 0 #7b1fa2;
+	}
+
+	.paginationButton {
+		background: #1a237e;
+		border-color: #3949ab;
+		color: #9fa8da;
+		box-shadow: 0 4px 0 #3949ab;
+	}
+
+	.paginationButton:hover {
+		border-color: #5c6bc0;
+		background: #283593;
+		color: #c5cae9;
+		box-shadow: 0 7px 0 #3949ab;
+	}
+
+	.paginationButton.active {
+		background: #3f51b5;
+		border-color: #5c6bc0;
+		box-shadow: 0 4px 0 #283593;
+	}
+}
+
+@media (max-width: 768px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.duaArabic {
+		font-size: 1.5rem;
+	}
+
+	.duaInfo {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}
+
+@media (max-width: 600px) {
+	.searchBox {
+		flex-direction: column;
+	}
+
+	.searchButton {
+		width: 100%;
+		padding: 12px;
+	}
+}
