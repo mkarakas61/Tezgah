@@ -319,3 +319,12 @@ a.secondary {
 		filter: invert();
 	}
 }
+
+/* Font boyutu sınıfları */
+.smallFont {
+	font-size: 0.85em;
+}
+
+.largeFont {
+	font-size: 1.2em;
+}

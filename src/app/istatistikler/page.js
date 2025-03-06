@@ -13,6 +13,16 @@ export default function Istatistikler() {
 		week: 0,
 		month: 0,
 	});
+	const [settings, setSettings] = useState({
+		vibration: true,
+		sound: false,
+		notification: true,
+		resetConfirmation: true,
+		fontSizePreference: 'normal'
+	});
+
+	// Ses nesnesi oluştur
+	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
 
 	useEffect(() => {
 		// Local storage'dan kayıtlı verileri yükle
@@ -22,7 +32,34 @@ export default function Istatistikler() {
 			setSavedCounts(parsedData);
 			calculateStats(parsedData);
 		}
+
+		// Ayarları localStorage'den yükle
+		const storedSettings = localStorage.getItem('zikirmatikSettings');
+		if (storedSettings) {
+			const parsedSettings = JSON.parse(storedSettings);
+			setSettings({
+				vibration: parsedSettings.vibration ?? true,
+				sound: parsedSettings.sound ?? false,
+				notification: parsedSettings.notification ?? true,
+				resetConfirmation: parsedSettings.resetConfirmation ?? true,
+				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
+			});
+		}
 	}, []);
+
+	// Font büyüklüğü sınıfını ayarla
+	const fontSizeClass = settings.fontSizePreference === 'small' 
+		? styles.smallFont 
+		: settings.fontSizePreference === 'large' 
+			? styles.largeFont 
+			: '';
+
+	const playInterfaceSound = () => {
+		if (settings.sound && interfaceAudio) {
+			interfaceAudio.currentTime = 0;
+			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
+		}
+	};
 
 	const calculateStats = (data) => {
 		// Bugünün başlangıcı
@@ -78,7 +115,26 @@ export default function Istatistikler() {
 	};
 
 	const clearAllData = () => {
-		if (confirm('Tüm zikir verileriniz silinecek. Onaylıyor musunuz?')) {
+		// Onay ayarı açıksa sor
+		if (settings.resetConfirmation) {
+			if (confirm('Tüm zikir verileriniz silinecek. Onaylıyor musunuz?')) {
+				playInterfaceSound();
+				localStorage.removeItem('savedCounts');
+				setSavedCounts([]);
+				setStats({
+					total: 0,
+					byType: {},
+					today: 0,
+					week: 0,
+					month: 0,
+				});
+				
+				if (settings.notification) {
+					alert('Tüm veriler silindi.');
+				}
+			}
+		} else {
+			playInterfaceSound();
 			localStorage.removeItem('savedCounts');
 			setSavedCounts([]);
 			setStats({
@@ -88,18 +144,21 @@ export default function Istatistikler() {
 				week: 0,
 				month: 0,
 			});
-			alert('Tüm veriler silindi.');
+			
+			if (settings.notification) {
+				alert('Tüm veriler silindi.');
+			}
 		}
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} ${fontSizeClass}`}>
 			<div className={styles.navLinks}>
-				<Link href="/zikirmatik" className={styles.backLink}>
+				<Link href="/zikirmatik" className={styles.backLink} onClick={playInterfaceSound}>
 					← Zikirmatik
 				</Link>
 
-				<Link href="/" className={styles.homeLink}>
+				<Link href="/" className={styles.homeLink} onClick={playInterfaceSound}>
 					Ana Sayfa
 				</Link>
 			</div>

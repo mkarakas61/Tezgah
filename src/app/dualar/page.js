@@ -1,10 +1,47 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './dualar.module.css';
+import { useState, useEffect } from 'react';
 
 export default function Dualar() {
+	const [settings, setSettings] = useState({
+		sound: false,
+		fontSizePreference: 'normal'
+	});
+
+	// Ses nesnesi oluştur
+	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
+
+	useEffect(() => {
+		// Ayarları localStorage'den yükle
+		const storedSettings = localStorage.getItem('zikirmatikSettings');
+		if (storedSettings) {
+			const parsedSettings = JSON.parse(storedSettings);
+			setSettings({
+				sound: parsedSettings.sound ?? false,
+				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
+			});
+		}
+	}, []);
+
+	// Font büyüklüğü sınıfını ayarla
+	const fontSizeClass = settings.fontSizePreference === 'small' 
+		? styles.smallFont 
+		: settings.fontSizePreference === 'large' 
+			? styles.largeFont 
+			: '';
+
+	const playInterfaceSound = () => {
+		if (settings.sound && interfaceAudio) {
+			interfaceAudio.currentTime = 0;
+			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
+		}
+	};
+
 	return (
-		<div className={styles.container}>
-			<Link href="/" className={styles.backLink}>
+		<div className={`${styles.container} ${fontSizeClass}`}>
+			<Link href="/" className={styles.backLink} onClick={playInterfaceSound}>
 				← Ana Sayfa
 			</Link>
 
@@ -15,20 +52,20 @@ export default function Dualar() {
 
 			<div className={styles.searchBox}>
 				<input type="text" placeholder="Dua veya zikir ara..." disabled />
-				<button className={styles.searchButton} disabled>
+				<button className={styles.searchButton} disabled onClick={playInterfaceSound}>
 					Ara
 				</button>
 			</div>
 
 			<div className={styles.categoriesWrapper}>
 				<div className={styles.categories}>
-					<button className={`${styles.categoryButton} ${styles.active}`}>
+					<button className={`${styles.categoryButton} ${styles.active}`} onClick={playInterfaceSound}>
 						Tümü
 					</button>
-					<button className={styles.categoryButton}>Sabah Zikirleri</button>
-					<button className={styles.categoryButton}>Akşam Zikirleri</button>
-					<button className={styles.categoryButton}>Tesbihatlar</button>
-					<button className={styles.categoryButton}>Özel Dualar</button>
+					<button className={styles.categoryButton} onClick={playInterfaceSound}>Sabah Zikirleri</button>
+					<button className={styles.categoryButton} onClick={playInterfaceSound}>Akşam Zikirleri</button>
+					<button className={styles.categoryButton} onClick={playInterfaceSound}>Tesbihatlar</button>
+					<button className={styles.categoryButton} onClick={playInterfaceSound}>Özel Dualar</button>
 				</div>
 			</div>
 
@@ -52,6 +89,7 @@ export default function Dualar() {
 						<Link
 							href="/zikirmatik?zikir=Sübhanallah&target=33"
 							className={styles.duaButton}
+							onClick={playInterfaceSound}
 						>
 							Zikirmatik ile Say
 						</Link>
@@ -75,6 +113,7 @@ export default function Dualar() {
 						<Link
 							href="/zikirmatik?zikir=Elhamdülillah&target=33"
 							className={styles.duaButton}
+							onClick={playInterfaceSound}
 						>
 							Zikirmatik ile Say
 						</Link>
@@ -98,6 +137,7 @@ export default function Dualar() {
 						<Link
 							href="/zikirmatik?zikir=Allahu Ekber&target=33"
 							className={styles.duaButton}
+							onClick={playInterfaceSound}
 						>
 							Zikirmatik ile Say
 						</Link>
@@ -129,6 +169,7 @@ export default function Dualar() {
 						<Link
 							href="/zikirmatik?zikir=La ilahe illallah&target=100"
 							className={styles.duaButton}
+							onClick={playInterfaceSound}
 						>
 							Zikirmatik ile Say
 						</Link>
@@ -155,6 +196,7 @@ export default function Dualar() {
 						<Link
 							href="/zikirmatik?zikir=Estağfirullah&target=100"
 							className={styles.duaButton}
+							onClick={playInterfaceSound}
 						>
 							Zikirmatik ile Say
 						</Link>
@@ -163,13 +205,13 @@ export default function Dualar() {
 			</div>
 
 			<div className={styles.paginationContainer}>
-				<button className={`${styles.paginationButton} ${styles.active}`}>
+				<button className={`${styles.paginationButton} ${styles.active}`} onClick={playInterfaceSound}>
 					1
 				</button>
-				<button className={styles.paginationButton} disabled>
+				<button className={styles.paginationButton} disabled onClick={playInterfaceSound}>
 					2
 				</button>
-				<button className={styles.paginationButton} disabled>
+				<button className={styles.paginationButton} disabled onClick={playInterfaceSound}>
 					3
 				</button>
 			</div>

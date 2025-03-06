@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zikirmatik Uygulaması
+
+## Ses Dosyaları Hakkında Not
+
+Uygulama için iki farklı ses dosyası gerekmektedir:
+
+1. `public/sounds/zikir_click.mp3` - Zikirmatik butonuna basıldığında çalacak ses
+2. `public/sounds/interface_click.mp3` - Diğer butonlara basıldığında çalacak ses
+
+Bu ses dosyalarını temin ederek ilgili klasöre yerleştirmeniz gerekmektedir.
 
 ## Getting Started
 

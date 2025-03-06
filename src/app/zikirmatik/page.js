@@ -10,6 +10,17 @@ export default function Zikirmatik() {
 	const [savedCounts, setSavedCounts] = useState([]);
 	const [currentZikir, setCurrentZikir] = useState('Sübhanallah');
 	const [ozelZikirText, setOzelZikirText] = useState('Özel Zikir');
+	const [settings, setSettings] = useState({
+		vibration: true,
+		sound: false,
+		notification: true,
+		resetConfirmation: true,
+		fontSizePreference: 'normal'
+	});
+
+	// Ses nesneleri oluştur
+	const [zikirAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/zikir_click.mp3') : null);
+	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
 
 	// Zikir tipleri
 	const zikirTipleri = [
@@ -27,23 +38,61 @@ export default function Zikirmatik() {
 		if (saved) {
 			setSavedCounts(JSON.parse(saved));
 		}
+
+		// Ayarları localStorage'den yükle
+		const storedSettings = localStorage.getItem('zikirmatikSettings');
+		if (storedSettings) {
+			const parsedSettings = JSON.parse(storedSettings);
+			setSettings({
+				vibration: parsedSettings.vibration ?? true,
+				sound: parsedSettings.sound ?? false,
+				notification: parsedSettings.notification ?? true,
+				resetConfirmation: parsedSettings.resetConfirmation ?? true,
+				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
+			});
+		}
 	}, []);
 
+	// Font büyüklüğü sınıfını ayarla
+	const fontSizeClass = settings.fontSizePreference === 'small' 
+		? styles.smallFont 
+		: settings.fontSizePreference === 'large' 
+			? styles.largeFont 
+			: '';
+
+	const playZikirSound = () => {
+		if (settings.sound && zikirAudio) {
+			zikirAudio.currentTime = 0;
+			zikirAudio.play().catch(e => console.error("Ses çalınamadı:", e));
+		}
+	};
+
+	const playInterfaceSound = () => {
+		if (settings.sound && interfaceAudio) {
+			interfaceAudio.currentTime = 0;
+			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
+		}
+	};
+
 	const increment = () => {
+		playZikirSound();
+		
 		setCount((prev) => {
 			const newCount = prev + 1;
 
 			// Hedef sayıya ulaşıldıysa
 			if (newCount === target) {
-				// Tamamlandı bildirimi
-				if ('vibrate' in navigator) {
+				// Titreşim ayarı açıksa uygula
+				if (settings.vibration && 'vibrate' in navigator) {
 					navigator.vibrate(200);
 				}
 
-				// Tamamlandı bildirimi göster
-				setTimeout(() => {
-					alert(`${currentZikir} zikri tamamlandı! (${target}/${target})`);
-				}, 300);
+				// Bildirim ayarı açıksa göster
+				if (settings.notification) {
+					setTimeout(() => {
+						alert(`${currentZikir} zikri tamamlandı! (${target}/${target})`);
+					}, 300);
+				}
 			}
 
 			return newCount;
@@ -51,10 +100,20 @@ export default function Zikirmatik() {
 	};
 
 	const reset = () => {
+		// Onay ayarı açıksa sor
+		if (settings.resetConfirmation) {
+			if (!confirm('Sayaç sıfırlansın mı?')) {
+				return;
+			}
+		}
+		
+		playInterfaceSound();
 		setCount(0);
 	};
 
 	const saveCount = () => {
+		playInterfaceSound();
+		
 		const newSavedCount = {
 			zikir: currentZikir,
 			count: count,
@@ -67,17 +126,23 @@ export default function Zikirmatik() {
 		// Local storage'a kaydet
 		localStorage.setItem('savedCounts', JSON.stringify(newSavedCounts));
 
-		alert(`${count} adet ${currentZikir} zikri kaydedildi.`);
+		// Bildirim ayarı açıksa göster
+		if (settings.notification) {
+			alert(`${count} adet ${currentZikir} zikri kaydedildi.`);
+		}
+		
 		reset();
 	};
 
 	const changeZikir = (zikir) => {
+		playInterfaceSound();
 		setCurrentZikir(zikir.name);
 		setTarget(zikir.defaultTarget);
-		reset();
+		setCount(0);
 	};
 
 	const handleOzelZikirChange = (newText) => {
+		playInterfaceSound();
 		setOzelZikirText(newText);
 		// Zikir tiplerini güncelle
 		if (currentZikir === 'Özel Zikir' || currentZikir === ozelZikirText) {
@@ -86,8 +151,8 @@ export default function Zikirmatik() {
 	};
 
 	return (
-		<div className={styles.container}>
-			<Link href="/" className={styles.backLink}>
+		<div className={`${styles.container} ${fontSizeClass}`}>
+			<Link href="/" className={styles.backLink} onClick={playInterfaceSound}>
 				← Ana Sayfa
 			</Link>
 
@@ -184,7 +249,7 @@ export default function Zikirmatik() {
 								</div>
 							))}
 					</div>
-					<Link href="/istatistikler" className={styles.viewAllLink}>
+					<Link href="/istatistikler" className={styles.viewAllLink} onClick={playInterfaceSound}>
 						Tüm Kayıtları Görüntüle →
 					</Link>
 				</div>
