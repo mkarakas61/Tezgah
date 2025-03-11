@@ -33,7 +33,7 @@ export default function Dualar() {
 			: '';
 
 	const playInterfaceSound = () => {
-		if (settings.sound && interfaceAudio) {
+		if (interfaceAudio) {
 			interfaceAudio.currentTime = 0;
 			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}

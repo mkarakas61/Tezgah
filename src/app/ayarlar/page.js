@@ -10,6 +10,7 @@ export default function Ayarlar() {
 	const [notification, setNotification] = useState(true);
 	const [resetConfirmation, setResetConfirmation] = useState(true);
 	const [fontSizePreference, setFontSizePreference] = useState('normal');
+	const [testAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
 
 	useEffect(() => {
 		// Ayarları localStorage'den yükle
@@ -35,6 +36,20 @@ export default function Ayarlar() {
 
 		localStorage.setItem('zikirmatikSettings', JSON.stringify(settings));
 		alert('Ayarlar kaydedildi.');
+	};
+
+	const testSound = () => {
+		if (testAudio) {
+			testAudio.currentTime = 0;
+			testAudio.play().catch(e => console.error("Test sesi çalınamadı:", e));
+		}
+	};
+
+	const toggleSound = (checked) => {
+		setSound(checked);
+		if (checked) {
+			testSound();
+		}
 	};
 
 	return (
@@ -77,7 +92,7 @@ export default function Ayarlar() {
 							<input
 								type="checkbox"
 								checked={sound}
-								onChange={(e) => setSound(e.target.checked)}
+								onChange={(e) => toggleSound(e.target.checked)}
 							/>
 							<span className={styles.slider}></span>
 						</label>

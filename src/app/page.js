@@ -34,7 +34,7 @@ export default function Home() {
 			: '';
 
 	const playInterfaceSound = () => {
-		if (settings.sound && interfaceAudio) {
+		if (interfaceAudio) {
 			interfaceAudio.currentTime = 0;
 			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}
@@ -86,6 +86,16 @@ export default function Home() {
 						<p>
 							Uygulama ayarlarını değiştirin ve özelleştirme seçeneklerini
 							keşfedin.
+						</p>
+					</div>
+				</Link>
+
+				<Link href="/yakinimda-camiler" className={styles.cardLink} onClick={playInterfaceSound}>
+					<div className={styles.card}>
+						<div className={styles.cardIcon}>🕌</div>
+						<h2>Yakınımdaki Camiler</h2>
+						<p>
+							Bulunduğunuz konuma yakın camileri harita üzerinde görüntüleyin.
 						</p>
 					</div>
 				</Link>

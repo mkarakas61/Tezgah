@@ -19,8 +19,18 @@ export default function Zikirmatik() {
 	});
 
 	// Ses nesneleri oluştur
-	const [zikirAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/zikir_click.mp3') : null);
-	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
+	const [zikirAudio] = useState(() => {
+		console.log('zikirAudio');
+		return typeof Audio !== 'undefined' 
+			? new Audio('/sounds/zikir_click.mp3') 
+			: null;
+	});
+	const [interfaceAudio] = useState(() => {
+		console.log('interfaceAudio');
+		return typeof Audio !== 'undefined' 
+			? new Audio('/sounds/interface_click.mp3') 
+			: null;
+	});
 
 	// Zikir tipleri
 	const zikirTipleri = [
@@ -61,14 +71,18 @@ export default function Zikirmatik() {
 			: '';
 
 	const playZikirSound = () => {
-		if (settings.sound && zikirAudio) {
+		console.log(zikirAudio);
+
+		if (zikirAudio) {
+			console.log('playZikirSound');
+
 			zikirAudio.currentTime = 0;
 			zikirAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}
 	};
 
 	const playInterfaceSound = () => {
-		if (settings.sound && interfaceAudio) {
+		if (interfaceAudio) {
 			interfaceAudio.currentTime = 0;
 			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}

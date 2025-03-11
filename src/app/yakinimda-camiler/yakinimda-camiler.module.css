@@ -1,0 +1,253 @@
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(to bottom, #f5f5f5, #e0f7fa);
+	font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+}
+
+/* Font boyutu sınıfları */
+.smallFont {
+	font-size: 0.85em;
+}
+
+.largeFont {
+	font-size: 1.2em;
+}
+
+.navLinks {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 25px;
+}
+
+.backLink {
+	color: #6a1b9a;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s;
+	background: #fff;
+	padding: 10px 15px;
+	border-radius: 30px;
+	box-shadow: 0 4px 0 #ce93d8;
+}
+
+.backLink:hover {
+	color: #4a148c;
+	transform: translateY(-3px);
+	box-shadow: 0 7px 0 #ce93d8;
+}
+
+.backLink:active {
+	transform: translateY(2px);
+	box-shadow: 0 2px 0 #ce93d8;
+}
+
+.title {
+	font-size: 2.5rem;
+	margin-bottom: 30px;
+	text-align: center;
+	color: #6a1b9a;
+	font-weight: 700;
+	text-shadow: 2px 2px 0px #e1bee7;
+	position: relative;
+}
+
+.title:after {
+	content: '🕌';
+	position: absolute;
+	font-size: 1.5rem;
+	top: -10px;
+	right: -40px;
+	transform: rotate(15deg);
+}
+
+.mapContainer {
+	width: 100%;
+	height: 500px;
+	margin-bottom: 40px;
+	border-radius: 20px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+	border: 5px solid #fff;
+}
+
+.loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 50px 0;
+	padding: 30px;
+	background: #fff;
+	border-radius: 20px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 500px;
+}
+
+.loadingSpinner {
+	width: 50px;
+	height: 50px;
+	border: 5px solid #e1bee7;
+	border-top: 5px solid #6a1b9a;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin-bottom: 20px;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.error {
+	background: #ffebee;
+	color: #c62828;
+	padding: 20px;
+	border-radius: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 600px;
+}
+
+.retryButton {
+	background: #6a1b9a;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 30px;
+	font-weight: bold;
+	cursor: pointer;
+	margin-top: 15px;
+	transition: all 0.3s;
+	font-family: inherit;
+}
+
+.retryButton:hover {
+	background: #4a148c;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.retryButton:active {
+	transform: translateY(1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mosquesContainer {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.sectionTitle {
+	font-size: 1.8rem;
+	color: #6a1b9a;
+	margin-bottom: 25px;
+	text-align: center;
+	font-weight: 700;
+	text-shadow: 1px 1px 0px #e1bee7;
+	position: relative;
+	display: inline-block;
+}
+
+.mosquesList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	width: 100%;
+}
+
+.mosqueCard {
+	background: white;
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s;
+	border-top: 5px solid #6a1b9a;
+}
+
+.mosqueCard:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mosqueName {
+	font-size: 1.3rem;
+	color: #6a1b9a;
+	margin-bottom: 10px;
+	border-bottom: 2px dashed #e1bee7;
+	padding-bottom: 8px;
+}
+
+.mosqueDetails {
+	margin-bottom: 15px;
+}
+
+.mosqueRating, .mosqueAddress, .mosqueStatus {
+	margin: 5px 0;
+	font-size: 0.95rem;
+}
+
+.mosqueRating {
+	color: #ff9800;
+	font-weight: 600;
+}
+
+.mosqueAddress {
+	color: #555;
+}
+
+.mosqueStatus {
+	color: #4caf50;
+	font-weight: 600;
+}
+
+.mosqueImageContainer {
+	width: 100%;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.mosqueImage {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s;
+}
+
+.mosqueImage:hover {
+	transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+	.mapContainer {
+		height: 350px;
+	}
+	
+	.mosquesList {
+		grid-template-columns: 1fr;
+	}
+	
+	.title {
+		font-size: 2rem;
+	}
+	
+	.title:after {
+		right: -30px;
+		font-size: 1.2rem;
+	}
+} 
