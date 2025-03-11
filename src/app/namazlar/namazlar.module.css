@@ -1,0 +1,410 @@
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 50px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+	font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: #343a40;
+}
+
+/* Font boyutu sınıfları */
+.smallFont {
+	font-size: 0.9em;
+}
+
+.largeFont {
+	font-size: 1.15em;
+}
+
+.navLinks {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.backLink {
+	color: #6c757d;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s;
+	padding: 12px 18px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid #dee2e6;
+}
+
+.backLink:hover {
+	color: #495057;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
+}
+
+.backLink:active {
+	transform: translateY(0);
+}
+
+.homeLink {
+	color: #6c757d;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1rem;
+	transition: all 0.3s;
+	padding: 12px 18px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid #dee2e6;
+}
+
+.homeLink:hover {
+	color: #495057;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
+}
+
+.homeLink:active {
+	transform: translateY(0);
+}
+
+.title {
+	font-size: 2.2rem;
+	margin-bottom: 2.5rem;
+	text-align: center;
+	color: #212529;
+	font-weight: 300;
+	letter-spacing: -0.5px;
+}
+
+.subtitle {
+	font-size: 1.5rem;
+	color: #343a40;
+	margin-bottom: 1.5rem;
+	font-weight: 400;
+	position: relative;
+	border-bottom: 1px solid #dee2e6;
+	padding-bottom: 10px;
+	width: 100%;
+}
+
+.prayerCategories {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+.categoryCard {
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	text-align: center;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+	transition: all 0.3s;
+	border: 1px solid #dee2e6;
+}
+
+.categoryCard:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.categoryCard:nth-child(1) {
+	border-top: 4px solid #007bff;
+}
+
+.categoryCard:nth-child(2) {
+	border-top: 4px solid #28a745;
+}
+
+.categoryCard:nth-child(3) {
+	border-top: 4px solid #6f42c1;
+}
+
+.categoryIcon {
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.categoryCard:nth-child(1) .categoryIcon {
+	color: #007bff;
+}
+
+.categoryCard:nth-child(2) .categoryIcon {
+	color: #28a745;
+}
+
+.categoryCard:nth-child(3) .categoryIcon {
+	color: #6f42c1;
+}
+
+.categoryTitle {
+	font-size: 1.2rem;
+	color: #343a40;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.categoryDescription {
+	font-size: 0.9rem;
+	color: #6c757d;
+}
+
+.prayerTimes {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 25px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+}
+
+.locationDisplay {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 20px;
+	padding: 10px;
+	background: #f8f9fa;
+	border-radius: 4px;
+	color: #495057;
+	font-weight: 500;
+}
+
+.locationIcon {
+	margin-right: 10px;
+	color: #6c757d;
+}
+
+.timesGrid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 15px;
+	margin-bottom: 20px;
+}
+
+.timeCard {
+	background: #f8f9fa;
+	border-radius: 8px;
+	padding: 15px 10px;
+	text-align: center;
+	transition: all 0.3s;
+	border: 1px solid #dee2e6;
+}
+
+.timeCard.active {
+	background: #cfe2ff;
+	border-color: #b6d4fe;
+}
+
+.timeLabel {
+	font-size: 0.9rem;
+	color: #6c757d;
+	margin-bottom: 5px;
+}
+
+.timeValue {
+	font-size: 1.2rem;
+	font-weight: 500;
+	color: #343a40;
+}
+
+.timeCard.active .timeLabel,
+.timeCard.active .timeValue {
+	color: #0d6efd;
+}
+
+.dateDisplay {
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 1.1rem;
+	color: #495057;
+}
+
+.locationSelector {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.locationLabel {
+	font-size: 1rem;
+	color: #343a40;
+	margin-bottom: 10px;
+}
+
+.citySelect,
+.districtSelect {
+	padding: 12px 15px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	background-color: white;
+	font-size: 1rem;
+	color: #495057;
+	margin-bottom: 15px;
+	width: 100%;
+	font-family: inherit;
+	transition: border-color 0.3s;
+}
+
+.citySelect:focus,
+.districtSelect:focus {
+	outline: none;
+	border-color: #86b7fe;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.selectRow {
+	display: flex;
+	gap: 15px;
+	width: 100%;
+}
+
+.selectColumn {
+	flex: 1;
+}
+
+/* Dua bölümü */
+.prayerSection {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 25px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+}
+
+.prayerList {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.prayerCard {
+	background: #f8f9fa;
+	border-radius: 8px;
+	padding: 20px;
+	transition: all 0.3s;
+	border: 1px solid #dee2e6;
+}
+
+.prayerCard:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.prayerTitle {
+	font-size: 1.1rem;
+	color: #343a40;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.prayerText {
+	font-size: 0.95rem;
+	color: #495057;
+	margin-bottom: 15px;
+	line-height: 1.6;
+}
+
+.prayerMeaning {
+	font-size: 0.9rem;
+	color: #6c757d;
+	padding: 10px;
+	background: rgba(222, 226, 230, 0.3);
+	border-radius: 4px;
+	font-style: italic;
+}
+
+.pronunciationButton {
+	padding: 8px 15px;
+	background-color: transparent;
+	color: #0d6efd;
+	border: 1px solid #0d6efd;
+	border-radius: 4px;
+	margin-top: 15px;
+	cursor: pointer;
+	font-family: inherit;
+	transition: all 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.pronunciationButton:hover {
+	background-color: #0d6efd;
+	color: white;
+}
+
+/* Loading indicators */
+.loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 30px;
+	color: #6c757d;
+}
+
+.spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	border-top: 4px solid #0d6efd;
+	width: 30px;
+	height: 30px;
+	animation: spin 1s linear infinite;
+	margin-bottom: 15px;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+	.container {
+		padding: 30px 20px;
+	}
+	
+	.prayerCategories {
+		grid-template-columns: 1fr;
+	}
+	
+	.timesGrid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: 10px;
+	}
+	
+	.selectRow {
+		flex-direction: column;
+	}
+	
+	.title {
+		font-size: 1.8rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.timesGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+} 

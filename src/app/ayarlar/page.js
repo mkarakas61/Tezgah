@@ -12,29 +12,67 @@ export default function Ayarlar() {
 	const [fontSizePreference, setFontSizePreference] = useState('normal');
 	const [testAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
 
+	// Font büyüklüğü sınıfını ayarla
+	const fontSizeClass = fontSizePreference === 'small' 
+		? styles.smallFont 
+		: fontSizePreference === 'large' 
+			? styles.largeFont 
+			: '';
+
 	useEffect(() => {
-		// Ayarları localStorage'den yükle
-		const settings = localStorage.getItem('zikirmatikSettings');
-		if (settings) {
-			const parsedSettings = JSON.parse(settings);
+		// Zikirmatik ayarlarını localStorage'den yükle
+		const zikirmatikSettings = localStorage.getItem('zikirmatikSettings');
+		if (zikirmatikSettings) {
+			const parsedSettings = JSON.parse(zikirmatikSettings);
 			setVibration(parsedSettings.vibration ?? true);
 			setSound(parsedSettings.sound ?? false);
 			setNotification(parsedSettings.notification ?? true);
 			setResetConfirmation(parsedSettings.resetConfirmation ?? true);
 			setFontSizePreference(parsedSettings.fontSizePreference ?? 'normal');
 		}
+
+		// Global ayarları da kontrol et
+		const globalSettings = localStorage.getItem('settings');
+		if (globalSettings) {
+			try {
+				const parsedGlobalSettings = JSON.parse(globalSettings);
+				// Global font boyutu ayarı varsa, onu kullan
+				if (parsedGlobalSettings.fontSizePreference) {
+					setFontSizePreference(parsedGlobalSettings.fontSizePreference);
+				}
+			} catch (error) {
+				console.error('Global ayarlar yüklenirken hata oluştu:', error);
+			}
+		}
 	}, []);
 
 	const saveSettings = () => {
-		const settings = {
+		// Zikirmatik ayarlarını kaydet
+		const zikirmatikSettings = {
 			vibration,
 			sound,
 			notification,
 			resetConfirmation,
 			fontSizePreference,
 		};
+		localStorage.setItem('zikirmatikSettings', JSON.stringify(zikirmatikSettings));
 
-		localStorage.setItem('zikirmatikSettings', JSON.stringify(settings));
+		// Global ayarları da güncelle
+		const globalSettings = localStorage.getItem('settings');
+		let parsedGlobalSettings = {};
+		
+		if (globalSettings) {
+			try {
+				parsedGlobalSettings = JSON.parse(globalSettings);
+			} catch (error) {
+				console.error('Global ayarlar ayrıştırılırken hata oluştu:', error);
+			}
+		}
+		
+		// Global ayarlara font boyutunu ekle
+		parsedGlobalSettings.fontSizePreference = fontSizePreference;
+		localStorage.setItem('settings', JSON.stringify(parsedGlobalSettings));
+
 		alert('Ayarlar kaydedildi.');
 	};
 
@@ -53,25 +91,27 @@ export default function Ayarlar() {
 	};
 
 	return (
-		<div className={styles.container}>
-			<Link href="/" className={styles.backLink}>
-				← Ana Sayfa
-			</Link>
+		<div className={`${styles.container} ${fontSizeClass}`}>
+			<div className={styles.navLinks}>
+				<Link href="/" className={styles.backLink}>
+					← Ana Sayfa
+				</Link>
+			</div>
 
 			<h1 className={styles.title}>Ayarlar</h1>
 
 			<div className={styles.settingsContainer}>
-				<div className={styles.settingGroup}>
-					<h2 className={styles.groupTitle}>Bildirimler</h2>
+				<div className={styles.settingSection}>
+					<h2 className={styles.sectionTitle}>Bildirimler</h2>
 
 					<div className={styles.settingItem}>
-						<div className={styles.settingInfo}>
-							<span className={styles.settingName}>Titreşim</span>
-							<span className={styles.settingDescription}>
+						<div className={styles.settingLabel}>
+							Titreşim
+							<div className={styles.settingDescription}>
 								Zikir sayımı sırasında titreşim
-							</span>
+							</div>
 						</div>
-						<label className={styles.toggle}>
+						<label className={styles.toggleSwitch}>
 							<input
 								type="checkbox"
 								checked={vibration}
@@ -82,13 +122,13 @@ export default function Ayarlar() {
 					</div>
 
 					<div className={styles.settingItem}>
-						<div className={styles.settingInfo}>
-							<span className={styles.settingName}>Ses</span>
-							<span className={styles.settingDescription}>
+						<div className={styles.settingLabel}>
+							Ses
+							<div className={styles.settingDescription}>
 								Zikir sayımı sırasında ses
-							</span>
+							</div>
 						</div>
-						<label className={styles.toggle}>
+						<label className={styles.toggleSwitch}>
 							<input
 								type="checkbox"
 								checked={sound}
@@ -99,13 +139,13 @@ export default function Ayarlar() {
 					</div>
 
 					<div className={styles.settingItem}>
-						<div className={styles.settingInfo}>
-							<span className={styles.settingName}>Uyarı Bildirimleri</span>
-							<span className={styles.settingDescription}>
+						<div className={styles.settingLabel}>
+							Uyarı Bildirimleri
+							<div className={styles.settingDescription}>
 								Zikir tamamlandığında bildirim
-							</span>
+							</div>
 						</div>
-						<label className={styles.toggle}>
+						<label className={styles.toggleSwitch}>
 							<input
 								type="checkbox"
 								checked={notification}
@@ -116,39 +156,53 @@ export default function Ayarlar() {
 					</div>
 				</div>
 
-				<div className={styles.settingGroup}>
-					<h2 className={styles.groupTitle}>Görünüm</h2>
+				<div className={styles.settingSection}>
+					<h2 className={styles.sectionTitle}>Görünüm</h2>
 
 					<div className={styles.settingItem}>
-						<div className={styles.settingInfo}>
-							<span className={styles.settingName}>Yazı Boyutu</span>
-							<span className={styles.settingDescription}>
+						<div className={styles.settingLabel}>
+							Yazı Boyutu
+							<div className={styles.settingDescription}>
 								Uygulama yazı boyutunu ayarlayın
-							</span>
+							</div>
 						</div>
-						<select
-							className={styles.select}
-							value={fontSizePreference}
-							onChange={(e) => setFontSizePreference(e.target.value)}
-						>
-							<option value="small">Küçük</option>
-							<option value="normal">Normal</option>
-							<option value="large">Büyük</option>
-						</select>
+						<div className={styles.fontSizeSelector}>
+							<button 
+								className={styles.fontSizeButton} 
+								onClick={() => setFontSizePreference('small')}
+								style={fontSizePreference === 'small' ? {color: '#0d6efd', borderColor: '#0d6efd'} : {}}
+							>
+								Küçük
+							</button>
+							<button 
+								className={styles.fontSizeButton} 
+								onClick={() => setFontSizePreference('normal')}
+								style={fontSizePreference === 'normal' ? {color: '#0d6efd', borderColor: '#0d6efd'} : {}}
+							>
+								Normal
+							</button>
+							<button 
+								className={styles.fontSizeButton} 
+								onClick={() => setFontSizePreference('large')}
+								style={fontSizePreference === 'large' ? {color: '#0d6efd', borderColor: '#0d6efd'} : {}}
+							>
+								Büyük
+							</button>
+						</div>
 					</div>
 				</div>
 
-				<div className={styles.settingGroup}>
-					<h2 className={styles.groupTitle}>Genel</h2>
+				<div className={styles.settingSection}>
+					<h2 className={styles.sectionTitle}>Genel</h2>
 
 					<div className={styles.settingItem}>
-						<div className={styles.settingInfo}>
-							<span className={styles.settingName}>Sıfırlama Onayı</span>
-							<span className={styles.settingDescription}>
+						<div className={styles.settingLabel}>
+							Sıfırlama Onayı
+							<div className={styles.settingDescription}>
 								Sayaç sıfırlanırken onay iste
-							</span>
+							</div>
 						</div>
-						<label className={styles.toggle}>
+						<label className={styles.toggleSwitch}>
 							<input
 								type="checkbox"
 								checked={resetConfirmation}
@@ -159,18 +213,25 @@ export default function Ayarlar() {
 					</div>
 				</div>
 
-				<button className={styles.saveButton} onClick={saveSettings}>
+				<button className={styles.buttonPrimary} onClick={saveSettings}>
 					Ayarları Kaydet
 				</button>
 
 				<div className={styles.aboutSection}>
-					<h2 className={styles.groupTitle}>Hakkında</h2>
+					<div className={styles.appVersion}>Versiyon 1.0.0</div>
 					<p className={styles.aboutText}>
 						Bu uygulama zikir ibadetlerini kolaylaştırmak amacıyla
 						geliştirilmiştir. Herhangi bir öneri veya geri bildiriminiz olursa
 						lütfen bize ulaşın.
 					</p>
-					<p className={styles.version}>Versiyon 1.0.0</p>
+					<div className={styles.socialLinks}>
+						<a href="#" className={styles.socialLink}>
+							📧 İletişim
+						</a>
+						<a href="#" className={styles.socialLink}>
+							⭐ Değerlendir
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

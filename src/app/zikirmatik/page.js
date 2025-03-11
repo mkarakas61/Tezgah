@@ -20,13 +20,11 @@ export default function Zikirmatik() {
 
 	// Ses nesneleri oluştur
 	const [zikirAudio] = useState(() => {
-		console.log('zikirAudio');
 		return typeof Audio !== 'undefined' 
 			? new Audio('/sounds/zikir_click.mp3') 
 			: null;
 	});
 	const [interfaceAudio] = useState(() => {
-		console.log('interfaceAudio');
 		return typeof Audio !== 'undefined' 
 			? new Audio('/sounds/interface_click.mp3') 
 			: null;
@@ -52,14 +50,34 @@ export default function Zikirmatik() {
 		// Ayarları localStorage'den yükle
 		const storedSettings = localStorage.getItem('zikirmatikSettings');
 		if (storedSettings) {
-			const parsedSettings = JSON.parse(storedSettings);
-			setSettings({
-				vibration: parsedSettings.vibration ?? true,
-				sound: parsedSettings.sound ?? false,
-				notification: parsedSettings.notification ?? true,
-				resetConfirmation: parsedSettings.resetConfirmation ?? true,
-				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
-			});
+			try {
+				const parsedSettings = JSON.parse(storedSettings);
+				setSettings({
+					vibration: parsedSettings.vibration ?? true,
+					sound: parsedSettings.sound ?? false,
+					notification: parsedSettings.notification ?? true,
+					resetConfirmation: parsedSettings.resetConfirmation ?? true,
+					fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
+				});
+			} catch (error) {
+				console.error('Zikirmatik ayarları yüklenirken hata oluştu:', error);
+			}
+		}
+
+		// Global font boyutu ayarını kontrol et
+		const globalSettings = localStorage.getItem('settings');
+		if (globalSettings) {
+			try {
+				const parsedGlobalSettings = JSON.parse(globalSettings);
+				if (parsedGlobalSettings.fontSizePreference) {
+					setSettings(prev => ({
+						...prev,
+						fontSizePreference: parsedGlobalSettings.fontSizePreference
+					}));
+				}
+			} catch (error) {
+				console.error('Global ayarlar yüklenirken hata oluştu:', error);
+			}
 		}
 	}, []);
 
@@ -71,18 +89,14 @@ export default function Zikirmatik() {
 			: '';
 
 	const playZikirSound = () => {
-		console.log(zikirAudio);
-
-		if (zikirAudio) {
-			console.log('playZikirSound');
-
+		if (zikirAudio && settings.sound) {
 			zikirAudio.currentTime = 0;
 			zikirAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}
 	};
 
 	const playInterfaceSound = () => {
-		if (interfaceAudio) {
+		if (interfaceAudio && settings.sound) {
 			interfaceAudio.currentTime = 0;
 			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
 		}
@@ -166,9 +180,11 @@ export default function Zikirmatik() {
 
 	return (
 		<div className={`${styles.container} ${fontSizeClass}`}>
-			<Link href="/" className={styles.backLink} onClick={playInterfaceSound}>
-				← Ana Sayfa
-			</Link>
+			<div className={styles.navLinks}>
+				<Link href="/" className={styles.backLink} onClick={playInterfaceSound}>
+					← Ana Sayfa
+				</Link>
+			</div>
 
 			<h1 className={styles.title}>Zikirmatik</h1>
 
@@ -204,7 +220,7 @@ export default function Zikirmatik() {
 
 			<div className={styles.targetContainer}>
 				<label htmlFor="target" className={styles.targetLabel}>
-					Hedef Sayı:{' '}
+					Hedef Sayı:
 				</label>
 				<input
 					id="target"
@@ -225,15 +241,15 @@ export default function Zikirmatik() {
 					<span className={styles.buttonHint}>Tıkla</span>
 				</button>
 
+				<div className={styles.targetInfo}>
+					<span>Hedef: {target}</span>
+				</div>
+
 				<div className={styles.progress}>
 					<div
 						className={styles.progressBar}
 						style={{ width: `${target > 0 ? (count / target) * 100 : 0}%` }}
 					></div>
-				</div>
-
-				<div className={styles.targetInfo}>
-					<span>Hedef: {target}</span>
 				</div>
 
 				<div className={styles.controls}>

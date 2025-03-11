@@ -1,643 +1,426 @@
 .container {
-	max-width: 800px;
+	max-width: 1000px;
 	margin: 0 auto;
-	padding: 40px 20px;
+	padding: 50px 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	min-height: 100vh;
-	background: linear-gradient(to bottom, #ffebee, #e8f5e9);
-	font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+	background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+	font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: #343a40;
 }
 
 /* Font boyutu sınıfları */
 .smallFont {
-	font-size: 0.85em;
+	font-size: 0.9em;
 }
 
 .largeFont {
-	font-size: 1.2em;
+	font-size: 1.15em;
+}
+
+.navLinks {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
 }
 
 .backLink {
-	align-self: flex-start;
-	color: #ff5722;
+	color: #6c757d;
 	text-decoration: none;
-	margin-bottom: 20px;
-	font-weight: 600;
-	font-size: 1.1rem;
+	font-weight: 500;
+	font-size: 1rem;
 	display: flex;
 	align-items: center;
 	transition: all 0.3s;
-	background: #fff;
-	padding: 10px 15px;
-	border-radius: 30px;
-	box-shadow: 0 4px 0 #ffab91;
+	padding: 12px 18px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid #dee2e6;
 }
 
 .backLink:hover {
-	color: #f4511e;
-	transform: translateY(-3px);
-	box-shadow: 0 7px 0 #ffab91;
+	color: #495057;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
 }
 
 .backLink:active {
-	transform: translateY(2px);
-	box-shadow: 0 2px 0 #ffab91;
+	transform: translateY(0);
 }
 
 .title {
-	font-size: 2.5rem;
-	margin-bottom: 2rem;
+	font-size: 2.2rem;
+	margin-bottom: 2.5rem;
 	text-align: center;
-	color: #ff5722;
-	font-weight: 700;
-	text-shadow: 2px 2px 0px #ffeb3b;
+	color: #212529;
+	font-weight: 300;
+	letter-spacing: -0.5px;
 }
 
 .zikirSelector {
+	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
+	gap: 15px;
+	margin-bottom: 30px;
 	justify-content: center;
-	gap: 10px;
-	margin-bottom: 25px;
-	width: 100%;
 }
 
 .zikirButton {
-	padding: 10px 18px;
-	border-radius: 30px;
-	border: 2px solid #e0e0e0;
-	background: white;
-	color: #7c4dff;
+	padding: 12px 20px;
+	background-color: white;
+	color: #495057;
+	border: 1px solid #dee2e6;
+	border-radius: 4px;
 	font-size: 1rem;
+	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s;
 	font-family: inherit;
-	box-shadow: 0 3px 0 #d1c4e9;
 }
 
 .zikirButton:hover {
-	border-color: #2196f3;
-	background: #e3f2fd;
-	transform: translateY(-3px);
-	box-shadow: 0 6px 0 #d1c4e9;
-}
-
-.zikirButton:active {
-	transform: translateY(2px);
-	box-shadow: 0 1px 0 #d1c4e9;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
 }
 
 .zikirButton.active {
-	background: #7c4dff;
+	background-color: #0d6efd;
 	color: white;
-	border-color: #7c4dff;
-	box-shadow: 0 3px 0 #5e35b1;
+	border-color: #0d6efd;
 }
 
 .ozelZikirContainer {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
 	display: flex;
 	align-items: center;
-	margin-bottom: 20px;
-	background: white;
-	padding: 12px 20px;
-	border-radius: 30px;
-	box-shadow: 0 4px 0 #b3e5fc, 0 5px 15px rgba(0, 0, 0, 0.1);
-	width: 100%;
-	max-width: 400px;
+	gap: 15px;
 }
 
 .ozelZikirLabel {
-	margin-right: 10px;
-	font-size: 1.1rem;
-	color: #7c4dff;
-	font-weight: 500;
+	font-size: 1rem;
+	color: #495057;
 	white-space: nowrap;
+	font-weight: 500;
 }
 
 .ozelZikirInput {
 	flex: 1;
-	padding: 8px 12px;
-	border-radius: 15px;
-	border: 2px solid #d1c4e9;
-	font-size: 1.1rem;
-	background: #f3e5f5;
-	color: #673ab7;
-	font-weight: 500;
+	padding: 12px 15px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	font-size: 1rem;
+	color: #495057;
 	font-family: inherit;
+	transition: border-color 0.3s;
+}
+
+.ozelZikirInput:focus {
+	outline: none;
+	border-color: #86b7fe;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .targetContainer {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
 	display: flex;
 	align-items: center;
-	margin-bottom: 30px;
-	background: white;
-	padding: 12px 20px;
-	border-radius: 30px;
-	box-shadow: 0 4px 0 #b3e5fc, 0 5px 15px rgba(0, 0, 0, 0.1);
+	gap: 15px;
 }
 
 .targetLabel {
-	margin-right: 10px;
-	font-size: 1.1rem;
-	color: #2196f3;
+	font-size: 1rem;
+	color: #495057;
+	white-space: nowrap;
 	font-weight: 500;
 }
 
 .targetInput {
-	width: 80px;
-	padding: 8px;
-	border-radius: 15px;
-	border: 2px solid #90caf9;
-	font-size: 1.1rem;
-	text-align: center;
-	background: #e3f2fd;
-	color: #0d47a1;
-	font-weight: 600;
+	width: 100px;
+	padding: 12px 15px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	font-size: 1rem;
+	color: #495057;
 	font-family: inherit;
+	text-align: center;
+}
+
+.targetInput:focus {
+	outline: none;
+	border-color: #86b7fe;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.counterContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .counterCard {
 	width: 100%;
-	max-width: 400px;
+	max-width: 500px;
 	background: white;
-	border-radius: 30px;
+	border-radius: 8px;
 	padding: 30px;
-	box-shadow: 0 10px 0 #c5cae9, 0 15px 30px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+	margin-bottom: 40px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 40px;
 	position: relative;
-	border: 3px solid #4fc3f7;
-	overflow: hidden;
 }
 
-.counterCard:before {
+.counterCard::after {
 	content: '';
 	position: absolute;
-	width: 100%;
-	height: 15px;
-	background: repeating-linear-gradient(
-		45deg,
-		#ce93d8,
-		#ce93d8 10px,
-		#9fa8da 10px,
-		#9fa8da 20px
-	);
 	top: 0;
 	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: #0d6efd;
+	border-radius: 8px 8px 0 0;
 }
 
 .currentZikir {
-	font-size: 1.8rem;
-	color: #673ab7;
-	margin-bottom: 20px;
+	font-size: 1.5rem;
+	color: #343a40;
+	margin-bottom: 25px;
 	text-align: center;
-	background: #f3e5f5;
-	padding: 10px 20px;
-	border-radius: 20px;
+	font-weight: 400;
 }
 
-/* Yeni büyük buton stili */
+/* Büyük buton ve sayaç */
 .bigCounterButton {
-	width: 200px;
-	height: 200px;
+	width: 160px;
+	height: 160px;
 	border-radius: 50%;
-	border: none;
-	background: linear-gradient(135deg, #ff9800, #ff5722);
+	background: linear-gradient(135deg, #0d6efd, #0a58ca);
 	color: white;
-	cursor: pointer;
-	margin-bottom: 25px;
-	box-shadow: 0 15px 0 #e64a19, 0 12px 30px rgba(255, 87, 34, 0.3);
+	border: none;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+	cursor: pointer;
 	transition: all 0.3s;
-	-webkit-tap-highlight-color: transparent;
-	position: relative;
-	font-family: inherit;
+	margin-bottom: 25px;
 }
 
 .bigCounterButton:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 20px 0 #e64a19, 0 15px 35px rgba(255, 87, 34, 0.4);
+	box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
 }
 
 .bigCounterButton:active {
-	transform: translateY(10px);
-	box-shadow: 0 5px 0 #e64a19, 0 5px 15px rgba(255, 87, 34, 0.4);
+	transform: translateY(2px);
+	box-shadow: 0 3px 10px rgba(13, 110, 253, 0.3);
 }
 
 .countNumber {
-	font-size: 6rem;
-	font-weight: 700;
+	font-size: 3.5rem;
+	font-weight: 300;
 	line-height: 1;
-	margin-bottom: 10px;
-	text-shadow: 3px 3px 0 #e64a19;
+	margin-bottom: 5px;
 }
 
 .buttonHint {
-	font-size: 1.1rem;
-	font-weight: 500;
-	opacity: 0.9;
-	background: rgba(255, 255, 255, 0.3);
-	padding: 5px 15px;
-	border-radius: 20px;
+	font-size: 0.8rem;
+	font-weight: 400;
+	background: rgba(255, 255, 255, 0.2);
+	padding: 3px 12px;
+	border-radius: 12px;
 }
 
 .targetInfo {
 	margin: 10px 0 20px;
-	color: #ff9800;
-	font-size: 1.3rem;
-	font-weight: 600;
-	background: #fff3e0;
+	color: #495057;
+	font-size: 1.1rem;
+	font-weight: 500;
 	padding: 8px 15px;
-	border-radius: 20px;
-	border: 2px dashed #ffb74d;
+	background-color: #f8f9fa;
+	border-radius: 4px;
 }
 
 .progress {
 	width: 100%;
-	height: 20px;
-	background: #eceff1;
-	border-radius: 30px;
+	height: 8px;
+	background-color: #e9ecef;
+	border-radius: 4px;
 	margin-bottom: 15px;
 	overflow: hidden;
-	border: 2px solid #cfd8dc;
-	box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .progressBar {
 	height: 100%;
-	background: linear-gradient(to right, #2196f3, #673ab7);
-	border-radius: 30px;
-	transition: width 0.5s ease-out;
+	background: linear-gradient(to right, #0d6efd, #6610f2);
+	border-radius: 4px;
+	transition: width 0.3s;
 }
 
 .controls {
 	display: flex;
 	justify-content: center;
-	gap: 20px;
+	gap: 15px;
 	width: 100%;
-	margin-top: 15px;
+	margin-top: 10px;
 }
 
 .controlButton {
-	padding: 12px 24px;
-	border-radius: 30px;
-	border: none;
-	background: #f5f5f5;
-	color: #555;
+	padding: 12px 20px;
+	background-color: white;
+	color: #495057;
+	border: 1px solid #dee2e6;
+	border-radius: 4px;
 	font-size: 1rem;
+	font-weight: 500;
 	cursor: pointer;
 	transition: all 0.3s;
 	font-family: inherit;
-	font-weight: 600;
-	box-shadow: 0 5px 0 #bdbdbd;
+	min-width: 120px;
 }
 
 .controlButton:hover {
-	background: #eeeeee;
-	color: #2196f3;
-	transform: translateY(-3px);
-	box-shadow: 0 8px 0 #bdbdbd;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
 }
 
-.controlButton:active {
-	transform: translateY(3px);
-	box-shadow: 0 2px 0 #bdbdbd;
+.controlButton:nth-child(1):hover {
+	color: #dc3545;
+	border-color: #dc3545;
+}
+
+.controlButton:nth-child(2):hover {
+	color: #198754;
+	border-color: #198754;
 }
 
 .savedCountsSection {
 	width: 100%;
-	max-width: 500px;
 	background: white;
-	border-radius: 20px;
+	border-radius: 8px;
 	padding: 25px;
-	margin-top: 30px;
-	box-shadow: 0 8px 0 #ffcc80, 0 10px 20px rgba(0, 0, 0, 0.1);
-	border: 3px solid #ffb74d;
-	position: relative;
-	overflow: hidden;
-}
-
-.savedCountsSection:before {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 12px;
-	background: repeating-linear-gradient(
-		45deg,
-		#ffcc80,
-		#ffcc80 10px,
-		#ffe0b2 10px,
-		#ffe0b2 20px
-	);
-	top: 0;
-	left: 0;
+	margin-top: 20px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
 }
 
 .sectionTitle {
-	font-size: 1.5rem;
-	color: #ff9800;
+	font-size: 1.3rem;
+	color: #343a40;
 	margin-bottom: 20px;
-	text-align: center;
-	font-weight: 700;
-	text-shadow: 1px 1px 0 #fff3e0;
+	font-weight: 400;
+	border-bottom: 1px solid #dee2e6;
+	padding-bottom: 10px;
 }
 
 .savedCountsList {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	max-height: 300px;
-	overflow-y: auto;
-	padding: 5px;
-	margin-bottom: 20px;
 }
 
 .savedCountItem {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
-	padding: 12px 15px;
-	background: #fff8e1;
-	border-radius: 15px;
-	border-left: 6px solid #ffc107;
-	box-shadow: 0 3px 0 #ffe082;
+	padding: 15px;
+	background: #f8f9fa;
+	border-radius: 4px;
+	border: 1px solid #e9ecef;
 	transition: all 0.3s;
 }
 
 .savedCountItem:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 6px 0 #ffe082;
+	background: #e9ecef;
+	transform: translateY(-2px);
 }
 
 .savedCountZikir {
-	font-weight: 600;
-	color: #ef6c00;
-	flex: 1;
+	font-weight: 500;
+	color: #343a40;
 }
 
 .savedCountValue {
-	color: #7b1fa2;
-	font-weight: 700;
-	margin: 0 15px;
-	background: white;
-	padding: 5px 10px;
-	border-radius: 20px;
-	border: 2px solid #ce93d8;
-}
-
-.savedCountDate {
-	color: #7986cb;
-	font-size: 0.9rem;
+	color: #0d6efd;
 	font-weight: 500;
 }
 
+.savedCountDate {
+	color: #6c757d;
+	font-size: 0.9rem;
+}
+
 .viewAllLink {
-	display: block;
-	text-align: center;
+	display: inline-block;
 	margin-top: 20px;
-	color: #2196f3;
+	color: #0d6efd;
 	text-decoration: none;
-	font-size: 1.1rem;
-	font-weight: 600;
-	padding: 10px;
-	background: #e3f2fd;
-	border-radius: 30px;
+	font-weight: 500;
 	transition: all 0.3s;
-	border: 2px dashed #90caf9;
 }
 
 .viewAllLink:hover {
-	background: #bbdefb;
-	transform: scale(1.05);
+	color: #0a58ca;
+	text-decoration: underline;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (max-width: 768px) {
 	.container {
-		background: linear-gradient(to bottom, #4a148c, #1a237e);
+		padding: 30px 20px;
 	}
-
-	.backLink {
-		color: #ff9800;
-		background: #311b92;
-		box-shadow: 0 4px 0 #7e57c2;
-	}
-
-	.backLink:hover {
-		color: #ffb74d;
-		box-shadow: 0 7px 0 #7e57c2;
-	}
-
+	
 	.title {
-		color: #ff9800;
-		text-shadow: 2px 2px 0 #f57f17;
+		font-size: 1.8rem;
 	}
-
-	.zikirButton {
-		background: #1a237e;
-		border-color: #3949ab;
-		color: #b39ddb;
-		box-shadow: 0 3px 0 #5e35b1;
-	}
-
-	.zikirButton:hover {
-		border-color: #3f51b5;
-		background: #283593;
-		box-shadow: 0 6px 0 #5e35b1;
-	}
-
-	.zikirButton.active {
-		background: #9c27b0;
-		color: white;
-		border-color: #7b1fa2;
-		box-shadow: 0 3px 0 #6a1b9a;
-	}
-
-	.targetLabel {
-		color: #29b6f6;
-	}
-
-	.targetInput {
-		background: #0d47a1;
-		border-color: #1976d2;
-		color: #e3f2fd;
-	}
-
-	.counterCard {
-		background: #1a237e;
-		box-shadow: 0 10px 0 #303f9f, 0 15px 30px rgba(0, 0, 0, 0.5);
-		border-color: #0277bd;
-	}
-
-	.counterCard:before {
-		background: repeating-linear-gradient(
-			45deg,
-			#7b1fa2,
-			#7b1fa2 10px,
-			#512da8 10px,
-			#512da8 20px
-		);
-	}
-
-	.currentZikir {
-		color: #e1bee7;
-		background: #4a148c;
-	}
-
-	/* Karanlık tema için büyük buton stilleri */
-	.bigCounterButton {
-		background: linear-gradient(135deg, #ff9800, #d84315);
-		box-shadow: 0 15px 0 #bf360c, 0 12px 30px rgba(255, 87, 34, 0.5);
-	}
-
-	.bigCounterButton:hover {
-		box-shadow: 0 20px 0 #bf360c, 0 15px 35px rgba(255, 87, 34, 0.6);
-	}
-
-	.bigCounterButton:active {
-		box-shadow: 0 5px 0 #bf360c, 0 5px 15px rgba(255, 87, 34, 0.6);
-	}
-
-	.countNumber {
-		text-shadow: 3px 3px 0 #bf360c;
-	}
-
-	.targetInfo {
-		color: #ffb74d;
-		background: #3e2723;
-		border-color: #ff9800;
-	}
-
-	.progress {
-		background: #263238;
-		border-color: #37474f;
-	}
-
-	.progressBar {
-		background: linear-gradient(to right, #00b0ff, #d500f9);
-	}
-
-	.controlButton {
-		background: #263238;
-		border-color: #37474f;
-		color: #b0bec5;
-		box-shadow: 0 5px 0 #546e7a;
-	}
-
-	.controlButton:hover {
-		border-color: #0288d1;
-		background: #37474f;
-		color: #29b6f6;
-		box-shadow: 0 8px 0 #546e7a;
-	}
-
-	.savedCountsSection {
-		background: #1a237e;
-		box-shadow: 0 8px 0 #ff8f00, 0 10px 20px rgba(0, 0, 0, 0.3);
-		border-color: #ffb300;
-	}
-
-	.savedCountsSection:before {
-		background: repeating-linear-gradient(
-			45deg,
-			#ff8f00,
-			#ff8f00 10px,
-			#ffb300 10px,
-			#ffb300 20px
-		);
-	}
-
-	.sectionTitle {
-		color: #ffb300;
-		text-shadow: 1px 1px 0 #ff6f00;
-	}
-
-	.savedCountItem {
-		background: #0d47a1;
-		border-left-color: #00b0ff;
-		box-shadow: 0 3px 0 #01579b;
-	}
-
-	.savedCountItem:hover {
-		box-shadow: 0 6px 0 #01579b;
-	}
-
-	.savedCountZikir {
-		color: #ffcc80;
-	}
-
-	.savedCountValue {
-		color: #ce93d8;
-		background: #4527a0;
-		border-color: #9c27b0;
-	}
-
-	.savedCountDate {
-		color: #9fa8da;
-	}
-
-	.viewAllLink {
-		color: #4fc3f7;
-		background: #0d47a1;
-		border-color: #1976d2;
-	}
-
-	.viewAllLink:hover {
-		background: #01579b;
-	}
-}
-
-@media (max-width: 600px) {
-	.zikirSelector {
-		gap: 8px;
-	}
-
-	.zikirButton {
-		padding: 8px 14px;
-		font-size: 0.9rem;
-	}
-
+	
 	.counterCard {
 		padding: 20px;
 	}
-
-	/* Mobil ekranlarda buton boyutu ayarı */
+	
 	.bigCounterButton {
-		width: 180px;
-		height: 180px;
+		width: 140px;
+		height: 140px;
 	}
-
+	
 	.countNumber {
-		font-size: 4.8rem;
+		font-size: 3rem;
 	}
-
+	
+	.ozelZikirContainer, .targetContainer {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+	
+	.ozelZikirInput, .targetInput {
+		width: 100%;
+	}
+	
 	.savedCountItem {
 		flex-direction: column;
-		align-items: flex-start;
 		gap: 8px;
-	}
-
-	.savedCountValue {
-		margin: 5px 0;
-	}
-
-	.ozelZikirContainer {
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 15px;
-	}
-	
-	.ozelZikirLabel {
-		margin-bottom: 8px;
-	}
-	
-	.ozelZikirInput {
-		width: 100%;
 	}
 }

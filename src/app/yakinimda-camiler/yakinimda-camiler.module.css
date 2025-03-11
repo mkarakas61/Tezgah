@@ -1,22 +1,23 @@
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 40px 20px;
+	padding: 50px 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	min-height: 100vh;
-	background: linear-gradient(to bottom, #f5f5f5, #e0f7fa);
-	font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive;
+	background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+	font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: #343a40;
 }
 
 /* Font boyutu sınıfları */
 .smallFont {
-	font-size: 0.85em;
+	font-size: 0.9em;
 }
 
 .largeFont {
-	font-size: 1.2em;
+	font-size: 1.15em;
 }
 
 .navLinks {
@@ -24,61 +25,51 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 }
 
 .backLink {
-	color: #6a1b9a;
+	color: #6c757d;
 	text-decoration: none;
-	font-weight: 600;
-	font-size: 1.1rem;
+	font-weight: 500;
+	font-size: 1rem;
 	display: flex;
 	align-items: center;
 	transition: all 0.3s;
-	background: #fff;
-	padding: 10px 15px;
-	border-radius: 30px;
-	box-shadow: 0 4px 0 #ce93d8;
+	padding: 12px 18px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid #dee2e6;
 }
 
 .backLink:hover {
-	color: #4a148c;
-	transform: translateY(-3px);
-	box-shadow: 0 7px 0 #ce93d8;
+	color: #495057;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
 }
 
 .backLink:active {
-	transform: translateY(2px);
-	box-shadow: 0 2px 0 #ce93d8;
+	transform: translateY(0);
 }
 
 .title {
-	font-size: 2.5rem;
-	margin-bottom: 30px;
+	font-size: 2.2rem;
+	margin-bottom: 2rem;
 	text-align: center;
-	color: #6a1b9a;
-	font-weight: 700;
-	text-shadow: 2px 2px 0px #e1bee7;
-	position: relative;
-}
-
-.title:after {
-	content: '🕌';
-	position: absolute;
-	font-size: 1.5rem;
-	top: -10px;
-	right: -40px;
-	transform: rotate(15deg);
+	color: #212529;
+	font-weight: 300;
+	letter-spacing: -0.5px;
 }
 
 .mapContainer {
 	width: 100%;
 	height: 500px;
 	margin-bottom: 40px;
-	border-radius: 20px;
+	border-radius: 8px;
 	overflow: hidden;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-	border: 5px solid #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	border: 1px solid #dee2e6;
 }
 
 .loading {
@@ -89,17 +80,18 @@
 	margin: 50px 0;
 	padding: 30px;
 	background: #fff;
-	border-radius: 20px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 	width: 100%;
 	max-width: 500px;
+	border: 1px solid #dee2e6;
 }
 
 .loadingSpinner {
 	width: 50px;
 	height: 50px;
-	border: 5px solid #e1bee7;
-	border-top: 5px solid #6a1b9a;
+	border: 3px solid #e9ecef;
+	border-top: 3px solid #007bff;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin-bottom: 20px;
@@ -111,39 +103,39 @@
 }
 
 .error {
-	background: #ffebee;
-	color: #c62828;
+	background: #f8d7da;
+	color: #721c24;
 	padding: 20px;
-	border-radius: 10px;
+	border-radius: 8px;
 	margin-bottom: 30px;
 	text-align: center;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 	width: 100%;
 	max-width: 600px;
+	border: 1px solid #f5c6cb;
 }
 
 .retryButton {
-	background: #6a1b9a;
+	background: #6c757d;
 	color: white;
 	border: none;
-	padding: 10px 20px;
-	border-radius: 30px;
-	font-weight: bold;
+	padding: 12px 20px;
+	border-radius: 4px;
+	font-weight: 500;
 	cursor: pointer;
 	margin-top: 15px;
 	transition: all 0.3s;
 	font-family: inherit;
+	font-size: 0.95rem;
 }
 
 .retryButton:hover {
-	background: #4a148c;
+	background: #5a6268;
 	transform: translateY(-2px);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .retryButton:active {
-	transform: translateY(1px);
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transform: translateY(0);
 }
 
 .mosquesContainer {
@@ -152,43 +144,43 @@
 }
 
 .sectionTitle {
-	font-size: 1.8rem;
-	color: #6a1b9a;
+	font-size: 1.5rem;
+	color: #343a40;
 	margin-bottom: 25px;
 	text-align: center;
-	font-weight: 700;
-	text-shadow: 1px 1px 0px #e1bee7;
+	font-weight: 400;
 	position: relative;
-	display: inline-block;
 }
 
 .mosquesList {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 	gap: 20px;
 	width: 100%;
 }
 
 .mosqueCard {
 	background: white;
-	border-radius: 15px;
+	border-radius: 8px;
 	padding: 20px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 	transition: all 0.3s;
-	border-top: 5px solid #6a1b9a;
+	border: 1px solid #dee2e6;
+	border-top: 4px solid #28a745;
 }
 
 .mosqueCard:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .mosqueName {
-	font-size: 1.3rem;
-	color: #6a1b9a;
-	margin-bottom: 10px;
-	border-bottom: 2px dashed #e1bee7;
-	padding-bottom: 8px;
+	font-size: 1.2rem;
+	color: #343a40;
+	margin-bottom: 12px;
+	border-bottom: 1px solid #e9ecef;
+	padding-bottom: 10px;
+	font-weight: 500;
 }
 
 .mosqueDetails {
@@ -196,30 +188,31 @@
 }
 
 .mosqueRating, .mosqueAddress, .mosqueStatus {
-	margin: 5px 0;
+	margin: 8px 0;
 	font-size: 0.95rem;
 }
 
 .mosqueRating {
-	color: #ff9800;
-	font-weight: 600;
+	color: #fd7e14;
+	font-weight: 500;
 }
 
 .mosqueAddress {
-	color: #555;
+	color: #6c757d;
 }
 
 .mosqueStatus {
-	color: #4caf50;
-	font-weight: 600;
+	color: #28a745;
+	font-weight: 500;
 }
 
 .mosqueImageContainer {
 	width: 100%;
-	height: 150px;
+	height: 180px;
 	overflow: hidden;
-	border-radius: 10px;
+	border-radius: 4px;
 	margin-top: 10px;
+	border: 1px solid #e9ecef;
 }
 
 .mosqueImage {
@@ -230,10 +223,14 @@
 }
 
 .mosqueImage:hover {
-	transform: scale(1.05);
+	transform: scale(1.03);
 }
 
 @media (max-width: 768px) {
+	.container {
+		padding: 30px 20px;
+	}
+	
 	.mapContainer {
 		height: 350px;
 	}
@@ -243,11 +240,6 @@
 	}
 	
 	.title {
-		font-size: 2rem;
-	}
-	
-	.title:after {
-		right: -30px;
-		font-size: 1.2rem;
+		font-size: 1.8rem;
 	}
 } 

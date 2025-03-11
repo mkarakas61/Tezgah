@@ -6,22 +6,61 @@ import { useState, useEffect } from 'react';
 
 export default function Dualar() {
 	const [settings, setSettings] = useState({
+		vibration: true,
 		sound: false,
+		notification: true,
+		resetConfirmation: true,
 		fontSizePreference: 'normal'
 	});
 
-	// Ses nesnesi oluştur
-	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
+	// Ses nesnelerini yükle
+	const [interfaceAudio] = useState(() => {
+		return typeof Audio !== 'undefined' 
+			? new Audio('/sounds/interface_click.mp3') 
+			: null;
+	});
 
+	// Ses çal
+	const playInterfaceSound = () => {
+		if (interfaceAudio && settings.sound) {
+			interfaceAudio.currentTime = 0;
+			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
+		}
+	};
+
+	// Ayarları yükle
 	useEffect(() => {
-		// Ayarları localStorage'den yükle
+		// Zikirmatik ayarlarını yükle
 		const storedSettings = localStorage.getItem('zikirmatikSettings');
 		if (storedSettings) {
-			const parsedSettings = JSON.parse(storedSettings);
-			setSettings({
-				sound: parsedSettings.sound ?? false,
-				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
-			});
+			try {
+				const parsedSettings = JSON.parse(storedSettings);
+				setSettings({
+					vibration: parsedSettings.vibration ?? true,
+					sound: parsedSettings.sound ?? false,
+					notification: parsedSettings.notification ?? true,
+					resetConfirmation: parsedSettings.resetConfirmation ?? true,
+					fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
+				});
+			} catch (error) {
+				console.error('Zikirmatik ayarları yüklenirken hata oluştu:', error);
+			}
+		}
+		
+		// Global font boyutu ayarını kontrol et
+		const globalSettings = localStorage.getItem('settings');
+		if (globalSettings) {
+			try {
+				const parsedGlobalSettings = JSON.parse(globalSettings);
+				if (parsedGlobalSettings.fontSizePreference) {
+					setSettings(prev => ({
+						...prev,
+						fontSizePreference: parsedGlobalSettings.fontSizePreference
+					}));
+				}
+			} catch (error) {
+				console.error('Global ayarlar yüklenirken hata oluştu:', error);
+			}
 		}
 	}, []);
 
@@ -31,13 +70,6 @@ export default function Dualar() {
 		: settings.fontSizePreference === 'large' 
 			? styles.largeFont 
 			: '';
-
-	const playInterfaceSound = () => {
-		if (interfaceAudio) {
-			interfaceAudio.currentTime = 0;
-			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
-		}
-	};
 
 	return (
 		<div className={`${styles.container} ${fontSizeClass}`}>
@@ -69,7 +101,7 @@ export default function Dualar() {
 				</div>
 			</div>
 
-			<div className={styles.duaList}>
+			<div className={styles.dualarList}>
 				<div className={styles.duaCard}>
 					<h2 className={styles.duaTitle}>Sübhanallah</h2>
 					<div className={styles.duaContent}>

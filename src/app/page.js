@@ -1,105 +1,73 @@
 'use client';
 
-import Image from 'next/image';
-import styles from './page.module.css';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import styles from './page.module.css';
 
 export default function Home() {
 	const [settings, setSettings] = useState({
-		sound: false,
 		fontSizePreference: 'normal'
 	});
 
-	// Ses nesnesi oluştur
-	const [interfaceAudio] = useState(() => typeof Audio !== 'undefined' ? new Audio('/sounds/interface_click.mp3') : null);
-
+	// Ayarları yükle
 	useEffect(() => {
-		// Ayarları localStorage'den yükle
-		const storedSettings = localStorage.getItem('zikirmatikSettings');
+		const storedSettings = localStorage.getItem('settings');
 		if (storedSettings) {
-			const parsedSettings = JSON.parse(storedSettings);
-			setSettings({
-				sound: parsedSettings.sound ?? false,
-				fontSizePreference: parsedSettings.fontSizePreference ?? 'normal'
-			});
+			try {
+				const parsedSettings = JSON.parse(storedSettings);
+				setSettings({
+					fontSizePreference: parsedSettings.fontSizePreference || 'normal'
+				});
+			} catch (error) {
+				console.error('Ayarlar yüklenirken hata oluştu:', error);
+			}
 		}
 	}, []);
 
 	// Font büyüklüğü sınıfını ayarla
-	const fontSizeClass = settings.fontSizePreference === 'small' 
-		? styles.smallFont 
-		: settings.fontSizePreference === 'large' 
-			? styles.largeFont 
+	const fontSizeClass = settings.fontSizePreference === 'small'
+		? styles.smallFont
+		: settings.fontSizePreference === 'large'
+			? styles.largeFont
 			: '';
 
-	const playInterfaceSound = () => {
-		if (interfaceAudio) {
-			interfaceAudio.currentTime = 0;
-			interfaceAudio.play().catch(e => console.error("Ses çalınamadı:", e));
-		}
-	};
-
 	return (
-		<div className={`${styles.container} ${fontSizeClass}`}>
-			<h1 className={styles.title}>Zikirmatik</h1>
+		<main className={`${styles.container} ${fontSizeClass}`}>
+			<h1 className={styles.title}>Hoş Geldiniz</h1>
 			<p className={styles.description}>
-				Günlük ibadetlerinizi takip etmenin en kolay yolu
+				İslami uygulamalar ve araçlar koleksiyonu
 			</p>
 
-			<div className={styles.cardGrid}>
-				<Link href="/zikirmatik" className={styles.cardLink} onClick={playInterfaceSound}>
-					<div className={styles.card}>
-						<div className={styles.cardIcon}>📿</div>
-						<h2>Zikirmatik</h2>
-						<p>
-							Zikirlerinizi saymak ve takip etmek için dijital zikirmatik
-							kullanın.
-						</p>
-					</div>
+			<div className={styles.grid}>
+				<Link href="/namaz-vakitleri" className={styles.card} data-icon="🕌">
+					<h2>Namaz Vakitleri</h2>
+					<p>Bulunduğunuz konuma göre güncel namaz vakitlerini görüntüleyin.</p>
 				</Link>
 
-				<Link href="/dualar" className={styles.cardLink} onClick={playInterfaceSound}>
-					<div className={styles.card}>
-						<div className={styles.cardIcon}>📖</div>
-						<h2>Dualar</h2>
-						<p>
-							Günlük okunan dua ve zikirler için hazır listeler ve anlamları.
-						</p>
-					</div>
+				<Link href="/zikirmatik" className={styles.card} data-icon="📿">
+					<h2>Zikirmatik</h2>
+					<p>Zikir çekmek için dijital sayaç.</p>
 				</Link>
 
-				<Link href="/istatistikler" className={styles.cardLink} onClick={playInterfaceSound}>
-					<div className={styles.card}>
-						<div className={styles.cardIcon}>📊</div>
-						<h2>İstatistikler</h2>
-						<p>
-							Zikir ibadetlerinizin günlük, haftalık ve aylık istatistikleri.
-						</p>
-					</div>
+				<Link href="/istatistikler" className={styles.card} data-icon="📊">
+					<h2>İstatistikler</h2>
+					<p>İbadet istatistiklerinizi görüntüleyin.</p>
 				</Link>
 
-				<Link href="/ayarlar" className={styles.cardLink} onClick={playInterfaceSound}>
-					<div className={styles.card}>
-						<div className={styles.cardIcon}>⚙️</div>
-						<h2>Ayarlar</h2>
-						<p>
-							Uygulama ayarlarını değiştirin ve özelleştirme seçeneklerini
-							keşfedin.
-						</p>
-					</div>
+				<Link href="/yakinimda-camiler" className={styles.card} data-icon="🕌">
+					<h2>Yakınımdaki Camiler</h2>
+					<p>Konumunuza göre yakındaki camileri harita üzerinde görüntüleyin.</p>
 				</Link>
 
-				<Link href="/yakinimda-camiler" className={styles.cardLink} onClick={playInterfaceSound}>
-					<div className={styles.card}>
-						<div className={styles.cardIcon}>🕌</div>
-						<h2>Yakınımdaki Camiler</h2>
-						<p>
-							Bulunduğunuz konuma yakın camileri harita üzerinde görüntüleyin.
-						</p>
-					</div>
+				<Link href="/ayarlar" className={styles.card} data-icon="⚙️">
+					<h2>Ayarlar</h2>
+					<p>Uygulama ayarlarınızı özelleştirin.</p>
 				</Link>
 			</div>
-		</div>
+			
+			<footer className={styles.footer}>
+				<p>© 2023 İslami Uygulamalar</p>
+			</footer>
+		</main>
 	);
 }
