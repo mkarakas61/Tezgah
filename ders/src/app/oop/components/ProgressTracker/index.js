@@ -7,13 +7,14 @@ export default function ProgressTracker({
   learnedConcepts, 
   progressPercentage, 
   darkMode,
-  onToggleLearned 
+  onToggleLearned,
+  menuOpen
 }) {
   // Zorluk seviyesine göre sıralama
   const sortedConcepts = [...concepts].sort((a, b) => a.difficultyLevel - b.difficultyLevel);
 
   return (
-    <div className={`${styles.sidebar} ${darkMode ? styles.darkSidebar : ''}`}>
+    <div className={`${styles.sidebar} ${darkMode ? styles.darkSidebar : ''} ${menuOpen ? styles.sidebarOpen : ''}`}>
       <div className={styles.progressContainer}>
         <h3 className={styles.sidebarTitle}>Öğrenme İlerlemesi</h3>
         
@@ -96,9 +97,11 @@ ProgressTracker.propTypes = {
   learnedConcepts: PropTypes.arrayOf(PropTypes.string).isRequired,
   progressPercentage: PropTypes.number.isRequired,
   darkMode: PropTypes.bool,
-  onToggleLearned: PropTypes.func.isRequired
+  onToggleLearned: PropTypes.func.isRequired,
+  menuOpen: PropTypes.bool
 };
 
 ProgressTracker.defaultProps = {
-  darkMode: false
+  darkMode: false,
+  menuOpen: false
 }; 

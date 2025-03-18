@@ -15,6 +15,7 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  padding-right: 320px;
 }
 
 .header {
@@ -24,6 +25,10 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .homeLink, .backButton {
@@ -49,6 +54,7 @@
 .homeLink {
   margin-top: 10px;
   margin-bottom: 30px;
+  align-self: flex-start;
 }
 
 .darkMode .homeLink, 
@@ -112,6 +118,8 @@
   font-weight: 400;
   color: #334155;
   margin: 0 0 20px 0;
+  max-width: 800px;
+  text-align: center;
 }
 
 .darkMode .subtitle {
@@ -123,6 +131,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  margin-bottom: 30px;
 }
 
 .tag {
@@ -166,8 +175,9 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-  padding-right: 360px;
   position: relative;
+  padding-right: 0;
+  margin-top: 20px;
 }
 
 .conceptGrid {
@@ -176,6 +186,7 @@
   gap: 24px;
   margin-bottom: 40px;
   width: 100%;
+  padding-top: 20px;
 }
 
 .backButton {
@@ -185,14 +196,16 @@
   font-size: 15px;
   font-weight: 600;
   padding: 12px 22px;
-  margin-bottom: 24px;
-  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-top: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: #3b82f6;
   border-radius: 6px;
   box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
   border: none;
+  position: relative;
+  z-index: 5;
   align-self: flex-start;
 }
 
@@ -223,7 +236,7 @@
   display: flex;
   align-items: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 110;
 }
 
 .darkMode .tokenDisplay {
@@ -247,35 +260,196 @@
   color: #f8fafc;
 }
 
+/* Hamburger menü için gerekli stiller */
+.mobileMenuToggle {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background-color: #3b82f6;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  z-index: 210;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.mobileMenuToggle:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.mobileMenuToggle:active {
+  transform: translateY(1px);
+}
+
+.menuOpen .mobileMenuToggle {
+  background-color: #2563eb;
+}
+
+.hamburgerIcon {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+.hamburgerIcon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburgerIcon span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburgerIcon span:nth-child(2), .hamburgerIcon span:nth-child(3) {
+  top: 8px;
+}
+
+.hamburgerIcon span:nth-child(4) {
+  top: 16px;
+}
+
+.menuOpen .hamburgerIcon span:nth-child(1) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
+}
+
+.menuOpen .hamburgerIcon span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.menuOpen .hamburgerIcon span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.menuOpen .hamburgerIcon span:nth-child(4) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
+}
+
 /* Responsive tasarım için medya sorguları */
 @media (max-width: 1024px) {
+  .container {
+    padding-right: 0;
+  }
+  
   .contentWithSidebar {
     grid-template-columns: 1fr;
     padding-right: 0;
+    margin-top: 20px;
   }
   
   /* Mobil cihazlarda ProgressTracker'ın konumunu değiştir */
   .sidebar {
-    position: relative;
-    width: 100%;
+    display: block;
+    position: fixed;
+    width: 280px;
     top: 0;
-    right: 0;
-    margin-bottom: 20px;
-    max-height: none;
+    right: -300px; /* Başlangıçta ekran dışında */
+    height: 100vh;
+    margin-bottom: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 150;
+    border-radius: 0;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding-top: 60px;
   }
   
-  .homeLink, .backButton {
+  /* Menü açıkken sidebar pozisyonu */
+  /* Bu kod artık kullanılmıyor, sidebar kontrolü direk olarak ProgressTracker içinde yapılıyor */
+  /* .main.menuOpen .sidebar {
+    right: 0;
+  } */
+  
+  .mobileMenuToggle {
+    display: flex;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 140;
+  }
+  
+  .menuOpen .overlay {
+    display: block;
+  }
+  
+  .homeLink {
     align-self: center;
     margin-left: auto;
     margin-right: auto;
   }
   
+  .header {
+    padding: 0 20px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .title {
+    text-align: center;
+  }
+  
+  .subtitle {
+    text-align: center;
+  }
+  
+  .tags {
+    justify-content: center;
+  }
+  
+  .backButton {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .conceptsList {
-    max-height: 300px;
+    max-height: calc(100vh - 240px);
   }
   
   .conceptGrid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .sidebarTitle {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .tokenDisplay {
+    z-index: 110;
+    right: 75px; /* Hamburger menü düğmesi için yer bırak */
   }
 }
 
@@ -290,6 +464,11 @@
   
   .conceptGrid {
     grid-template-columns: 1fr;
+    padding-top: 10px;
+  }
+  
+  .contentWithSidebar {
+    margin-top: 60px;
   }
 }
 
@@ -450,9 +629,73 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 10px;
+  padding-top: 0;
+  margin-bottom: 30px;
+  position: relative;
 }
 
-.detailContainer .backButton {
-  margin-top: 10px;
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 22px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #3b82f6;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  position: relative;
+  z-index: 5;
+  align-self: flex-start;
+}
+
+.darkMode .backButton {
+  color: #ffffff;
+  background-color: #3182ce;
+  box-shadow: 0 4px 6px rgba(49, 130, 206, 0.4);
+}
+
+.backButton:hover {
+  color: #ffffff;
+  background-color: #3182ce;
+  transform: translateY(-2px);
+}
+
+.darkMode .backButton:hover {
+  color: #ffffff;
+  background-color: #2b6cb0;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 140;
+}
+
+.menuOpen .overlay {
+  display: block;
+}
+
+/* Karanlık tema için sidebar gölge stilini tekrar ekleyelim */
+.darkMode .sidebar {
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.darkMode .mobileMenuToggle {
+  background-color: #3b82f6;
+}
+
+.darkMode .mobileMenuToggle:hover,
+.darkMode.menuOpen .mobileMenuToggle {
+  background-color: #2563eb;
 } 

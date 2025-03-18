@@ -230,4 +230,61 @@
 .darkSidebar .learnedCheckbox.checked {
   background-color: #059669;
   border-color: #059669;
+}
+
+/* Mobil görünüm için ek stiller */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 280px;
+    border-radius: 0;
+    top: 0;
+    right: -300px; /* Ekran dışında başla */
+    bottom: 0;
+    padding-top: 60px;
+    position: fixed;
+    height: 100vh;
+    max-height: 100vh;
+    transition: all 0.3s ease-in-out;
+    visibility: visible;
+    z-index: 150;
+    will-change: right; /* Performans iyileştirmesi */
+  }
+  
+  /* Sidebar'ı göster - menuOpen durumunda */
+  .sidebarOpen {
+    right: 0 !important;
+  }
+  
+  .sidebarTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .statsContainer {
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .statItem {
+    padding: 10px;
+  }
+  
+  .statValue {
+    font-size: 22px;
+  }
+  
+  .conceptsList {
+    max-height: calc(100vh - 240px);
+    margin-top: 16px;
+  }
+  
+  .conceptItem {
+    margin-bottom: 12px;
+    padding: 14px 16px;
+  }
+  
+  .progressBarContainer {
+    height: 14px;
+  }
 } 

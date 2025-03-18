@@ -16,6 +16,7 @@ function OopPage() {
   const [darkMode, setDarkMode] = useState(false);
   const [learnedConcepts, setLearnedConcepts] = useState([]);
   const [savTokens, setSavTokens] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false); // Menü durumu için state
   
   useEffect(() => {
     // Sayfa yüklendiğinde kullanıcının tercihine göre tema ayarla
@@ -41,9 +42,49 @@ function OopPage() {
     localStorage.setItem('savTokens', savTokens.toString());
   }, [learnedConcepts, savTokens]);
 
+  // Menü dışına tıklama ile menüyü kapatma işlevi
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && !event.target.closest(`.${styles.sidebar}`) && !event.target.closest(`.${styles.mobileMenuToggle}`)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen]);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+  
+  // Hamburger menüyü açıp kapatma fonksiyonu
+  const toggleMenu = () => {
+    console.log("Menü durumu değişti:", !menuOpen);
+    setMenuOpen(prevState => !prevState);
+  };
+  
+  // menuOpen değiştiğinde etkisini izleyelim
+  useEffect(() => {
+    console.log("Menü durumu:", menuOpen);
+    console.log("Sidebar elementi:", document.querySelector(`.${styles.sidebar}`));
+  }, [menuOpen]);
+  
+  // Ekran boyutu değiştiğinde menüyü kapatmak için
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 1024 && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [menuOpen]);
   
   // Öğrenilen/öğrenilmeyen kavram durumlarını değiştir
   const toggleLearnedStatus = (conceptId) => {
@@ -232,7 +273,7 @@ function OopPage() {
   const progressPercentage = (learnedConcepts.length / oopConcepts.length) * 100;
 
   return (
-    <main className={`${styles.main} ${darkMode ? styles.darkMode : ''}`}>
+    <main className={`${styles.main} ${darkMode ? styles.darkMode : ''} ${menuOpen ? styles.menuOpen : ''}`}>
       <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       
       <div className={styles.tokenDisplay}>
@@ -245,6 +286,23 @@ function OopPage() {
         />
         <span className={styles.tokenAmount}>{savTokens} SAV</span>
       </div>
+
+      {/* Hamburger menü butonu */}
+      <button 
+        className={styles.mobileMenuToggle} 
+        onClick={toggleMenu}
+        aria-label="Öğrenme İlerlemesi Menüsü"
+      >
+        <div className={styles.hamburgerIcon}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      
+      {/* Arka plan overlay */}
+      <div className={styles.overlay} onClick={() => setMenuOpen(false)}></div>
 
       <div className={styles.container}>
         <header className={styles.header}>
@@ -327,6 +385,7 @@ function OopPage() {
             progressPercentage={progressPercentage}
             darkMode={darkMode}
             onToggleLearned={toggleLearnedStatus}
+            menuOpen={menuOpen}
           />
         </div>
       </div>
