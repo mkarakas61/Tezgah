@@ -1,0 +1,426 @@
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 50px 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+	font-family: 'Roboto', 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: #343a40;
+}
+
+/* Font boyutu sınıfları */
+.smallFont {
+	font-size: 0.9em;
+}
+
+.largeFont {
+	font-size: 1.15em;
+}
+
+.navLinks {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.backLink {
+	color: #6c757d;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	transition: all 0.3s;
+	padding: 12px 18px;
+	border-radius: 4px;
+	background-color: transparent;
+	border: 1px solid #dee2e6;
+}
+
+.backLink:hover {
+	color: #495057;
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
+}
+
+.backLink:active {
+	transform: translateY(0);
+}
+
+.title {
+	font-size: 2.2rem;
+	margin-bottom: 2.5rem;
+	text-align: center;
+	color: #212529;
+	font-weight: 300;
+	letter-spacing: -0.5px;
+}
+
+.zikirSelector {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-bottom: 30px;
+	justify-content: center;
+}
+
+.zikirButton {
+	padding: 12px 20px;
+	background-color: white;
+	color: #495057;
+	border: 1px solid #dee2e6;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-family: inherit;
+}
+
+.zikirButton:hover {
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
+}
+
+.zikirButton.active {
+	background-color: #0d6efd;
+	color: white;
+	border-color: #0d6efd;
+}
+
+.ozelZikirContainer {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.ozelZikirLabel {
+	font-size: 1rem;
+	color: #495057;
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+.ozelZikirInput {
+	flex: 1;
+	padding: 12px 15px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	font-size: 1rem;
+	color: #495057;
+	font-family: inherit;
+	transition: border-color 0.3s;
+}
+
+.ozelZikirInput:focus {
+	outline: none;
+	border-color: #86b7fe;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.targetContainer {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin-bottom: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.targetLabel {
+	font-size: 1rem;
+	color: #495057;
+	white-space: nowrap;
+	font-weight: 500;
+}
+
+.targetInput {
+	width: 100px;
+	padding: 12px 15px;
+	border-radius: 4px;
+	border: 1px solid #ced4da;
+	font-size: 1rem;
+	color: #495057;
+	font-family: inherit;
+	text-align: center;
+}
+
+.targetInput:focus {
+	outline: none;
+	border-color: #86b7fe;
+	box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.counterContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.counterCard {
+	width: 100%;
+	max-width: 500px;
+	background: white;
+	border-radius: 8px;
+	padding: 30px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+	margin-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.counterCard::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: #0d6efd;
+	border-radius: 8px 8px 0 0;
+}
+
+.currentZikir {
+	font-size: 1.5rem;
+	color: #343a40;
+	margin-bottom: 25px;
+	text-align: center;
+	font-weight: 400;
+}
+
+/* Büyük buton ve sayaç */
+.bigCounterButton {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #0d6efd, #0a58ca);
+	color: white;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 5px 15px rgba(13, 110, 253, 0.3);
+	cursor: pointer;
+	transition: all 0.3s;
+	margin-bottom: 25px;
+}
+
+.bigCounterButton:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+}
+
+.bigCounterButton:active {
+	transform: translateY(2px);
+	box-shadow: 0 3px 10px rgba(13, 110, 253, 0.3);
+}
+
+.countNumber {
+	font-size: 3.5rem;
+	font-weight: 300;
+	line-height: 1;
+	margin-bottom: 5px;
+}
+
+.buttonHint {
+	font-size: 0.8rem;
+	font-weight: 400;
+	background: rgba(255, 255, 255, 0.2);
+	padding: 3px 12px;
+	border-radius: 12px;
+}
+
+.targetInfo {
+	margin: 10px 0 20px;
+	color: #495057;
+	font-size: 1.1rem;
+	font-weight: 500;
+	padding: 8px 15px;
+	background-color: #f8f9fa;
+	border-radius: 4px;
+}
+
+.progress {
+	width: 100%;
+	height: 8px;
+	background-color: #e9ecef;
+	border-radius: 4px;
+	margin-bottom: 15px;
+	overflow: hidden;
+}
+
+.progressBar {
+	height: 100%;
+	background: linear-gradient(to right, #0d6efd, #6610f2);
+	border-radius: 4px;
+	transition: width 0.3s;
+}
+
+.controls {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.controlButton {
+	padding: 12px 20px;
+	background-color: white;
+	color: #495057;
+	border: 1px solid #dee2e6;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-family: inherit;
+	min-width: 120px;
+}
+
+.controlButton:hover {
+	background-color: #f8f9fa;
+	border-color: #ced4da;
+	transform: translateY(-2px);
+}
+
+.controlButton:nth-child(1):hover {
+	color: #dc3545;
+	border-color: #dc3545;
+}
+
+.controlButton:nth-child(2):hover {
+	color: #198754;
+	border-color: #198754;
+}
+
+.savedCountsSection {
+	width: 100%;
+	background: white;
+	border-radius: 8px;
+	padding: 25px;
+	margin-top: 20px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+	border: 1px solid #dee2e6;
+}
+
+.sectionTitle {
+	font-size: 1.3rem;
+	color: #343a40;
+	margin-bottom: 20px;
+	font-weight: 400;
+	border-bottom: 1px solid #dee2e6;
+	padding-bottom: 10px;
+}
+
+.savedCountsList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.savedCountItem {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px;
+	background: #f8f9fa;
+	border-radius: 4px;
+	border: 1px solid #e9ecef;
+	transition: all 0.3s;
+}
+
+.savedCountItem:hover {
+	background: #e9ecef;
+	transform: translateY(-2px);
+}
+
+.savedCountZikir {
+	font-weight: 500;
+	color: #343a40;
+}
+
+.savedCountValue {
+	color: #0d6efd;
+	font-weight: 500;
+}
+
+.savedCountDate {
+	color: #6c757d;
+	font-size: 0.9rem;
+}
+
+.viewAllLink {
+	display: inline-block;
+	margin-top: 20px;
+	color: #0d6efd;
+	text-decoration: none;
+	font-weight: 500;
+	transition: all 0.3s;
+}
+
+.viewAllLink:hover {
+	color: #0a58ca;
+	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 30px 20px;
+	}
+	
+	.title {
+		font-size: 1.8rem;
+	}
+	
+	.counterCard {
+		padding: 20px;
+	}
+	
+	.bigCounterButton {
+		width: 140px;
+		height: 140px;
+	}
+	
+	.countNumber {
+		font-size: 3rem;
+	}
+	
+	.ozelZikirContainer, .targetContainer {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+	
+	.ozelZikirInput, .targetInput {
+		width: 100%;
+	}
+	
+	.savedCountItem {
+		flex-direction: column;
+		gap: 8px;
+	}
+}

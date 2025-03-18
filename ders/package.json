@@ -1,0 +1,21 @@
+{
+  "name": "ders",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "15.2.2",
+    "three": "^0.160.0",
+    "chart.js": "^4.4.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-intersection-observer": "^9.5.3",
+    "framer-motion": "^10.18.0"
+  }
+}
