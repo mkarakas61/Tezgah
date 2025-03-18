@@ -10,8 +10,20 @@ export default function ProgressTracker({
   onToggleLearned,
   menuOpen
 }) {
-  // Zorluk seviyesine göre sıralama
-  const sortedConcepts = [...concepts].sort((a, b) => a.difficultyLevel - b.difficultyLevel);
+  // Zorluk seviyesine ve öğrenilme durumuna göre sıralama
+  const sortedConcepts = [...concepts].sort((a, b) => {
+    // Öğrenme durumlarını kontrol et
+    const aLearned = learnedConcepts.includes(a.id);
+    const bLearned = learnedConcepts.includes(b.id);
+    
+    // Öğrenme durumları farklıysa, öğrenilmemiş olanları üste al
+    if (aLearned !== bLearned) {
+      return aLearned ? 1 : -1;
+    }
+    
+    // Öğrenme durumları aynıysa, zorluk seviyesine göre sırala
+    return a.difficultyLevel - b.difficultyLevel;
+  });
 
   return (
     <div className={`${styles.sidebar} ${darkMode ? styles.darkSidebar : ''} ${menuOpen ? styles.sidebarOpen : ''}`}>

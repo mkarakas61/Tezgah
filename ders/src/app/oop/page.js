@@ -69,6 +69,7 @@ function OopPage() {
   // menuOpen değiştiğinde etkisini izleyelim
   useEffect(() => {
     console.log("Menü durumu:", menuOpen);
+    console.log("menuOpen prop ProgressTracker'a gönderildi:", menuOpen);
     console.log("Sidebar elementi:", document.querySelector(`.${styles.sidebar}`));
   }, [menuOpen]);
   
@@ -101,18 +102,20 @@ function OopPage() {
     }
   };
   
-  // Kavramları zorluk seviyesine göre sırala
+  // Kavramları önce öğrenilme durumuna, sonra zorluk seviyesine göre sırala
   const sortConceptsByDifficulty = (a, b) => {
-    if (a.difficultyLevel !== b.difficultyLevel) {
-      return a.difficultyLevel - b.difficultyLevel;
-    }
-    
-    // Eğer öğrenme durumu farklı ise, öğrenilmemiş olanları üstte göster
+    // Önce öğrenme durumlarını kontrol et
     const aLearned = learnedConcepts.includes(a.id);
     const bLearned = learnedConcepts.includes(b.id);
     
+    // Öğrenme durumları farklıysa, öğrenilmemiş olanları üste al
     if (aLearned !== bLearned) {
       return aLearned ? 1 : -1;
+    }
+    
+    // Öğrenme durumları aynıysa, zorluk seviyesine göre sırala
+    if (a.difficultyLevel !== b.difficultyLevel) {
+      return a.difficultyLevel - b.difficultyLevel;
     }
     
     return 0;
@@ -266,7 +269,7 @@ function OopPage() {
     }
   ];
   
-  // Kavramları zorluk seviyesine göre sırala
+  // Kavramları sırala: Önce öğrenilmemiş, sonra öğrenilmiş kavramlar
   const sortedConcepts = [...oopConcepts].sort(sortConceptsByDifficulty);
   
   // Öğrenme durumuna göre ilerleme yüzdesi hesapla
