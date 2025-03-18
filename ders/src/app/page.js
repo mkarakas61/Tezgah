@@ -138,6 +138,13 @@ export default function Home() {
           description: 'Temel seviyeden ileri seviyeye Rust programlama dili eğitimi',
           icon: '🦀',
           path: '/rust'
+        },
+        {
+          id: 'oop',
+          title: 'OOP ve SOLID Prensipleri',
+          description: 'Nesne yönelimli programlama ve SOLID prensiplerini örneklerle öğrenin',
+          icon: '📐',
+          path: '/oop'
         }
       ]
     },

@@ -1,0 +1,458 @@
+.main {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f8fafc;
+  color: #111827;
+  transition: background-color 0.3s ease;
+}
+
+.darkMode {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  margin-bottom: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.homeLink, .backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  background-color: #3b82f6;
+  padding: 12px 22px;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  align-self: flex-start;
+}
+
+.homeLink {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.darkMode .homeLink, 
+.darkMode .backButton {
+  color: #ffffff;
+  background-color: #2563eb;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+}
+
+.homeLink:hover, 
+.backButton:hover {
+  color: #ffffff;
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(59, 130, 246, 0.3), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.darkMode .homeLink:hover, 
+.darkMode .backButton:hover {
+  color: #ffffff;
+  background-color: #1d4ed8;
+  box-shadow: 0 6px 8px rgba(37, 99, 235, 0.4);
+}
+
+.backArrow {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.title {
+  margin: 0 0 16px 0;
+  font-size: 36px;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.titleText {
+  position: relative;
+  z-index: 1;
+}
+
+.titleUnderline {
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: rgba(66, 153, 225, 0.3);
+  z-index: 0;
+}
+
+.darkMode .titleUnderline {
+  background-color: rgba(0, 116, 248, 0.3);
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #334155;
+  margin: 0 0 20px 0;
+}
+
+.darkMode .subtitle {
+  color: #e2e8f0;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tagPurple {
+  background-color: rgba(159, 122, 234, 0.2);
+  color: #4c1d95;
+}
+
+.darkMode .tagPurple {
+  background-color: rgba(159, 122, 234, 0.3);
+  color: #e9d5ff;
+}
+
+.tagBlue {
+  background-color: rgba(66, 153, 225, 0.2);
+  color: #1e40af;
+}
+
+.darkMode .tagBlue {
+  background-color: rgba(66, 153, 225, 0.3);
+  color: #dbeafe;
+}
+
+.tagGreen {
+  background-color: rgba(72, 187, 120, 0.2);
+  color: #065f46;
+}
+
+.darkMode .tagGreen {
+  background-color: rgba(72, 187, 120, 0.3);
+  color: #a7f3d0;
+}
+
+.contentWithSidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding-right: 360px;
+  position: relative;
+}
+
+.conceptGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 22px;
+  margin-bottom: 24px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #3b82f6;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+  align-self: flex-start;
+}
+
+.darkMode .backButton {
+  color: #ffffff;
+  background-color: #3182ce;
+  box-shadow: 0 4px 6px rgba(49, 130, 206, 0.4);
+}
+
+.backButton:hover {
+  color: #ffffff;
+  background-color: #3182ce;
+  transform: translateY(-2px);
+}
+
+.darkMode .backButton:hover {
+  color: #ffffff;
+  background-color: #2b6cb0;
+}
+
+.tokenDisplay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.darkMode .tokenDisplay {
+  background-color: #1a202c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tokenIcon {
+  margin-right: 8px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.tokenAmount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.darkMode .tokenAmount {
+  color: #f8fafc;
+}
+
+/* Responsive tasarım için medya sorguları */
+@media (max-width: 1024px) {
+  .contentWithSidebar {
+    grid-template-columns: 1fr;
+    padding-right: 0;
+  }
+  
+  /* Mobil cihazlarda ProgressTracker'ın konumunu değiştir */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+    right: 0;
+    margin-bottom: 20px;
+    max-height: none;
+  }
+  
+  .homeLink, .backButton {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .conceptsList {
+    max-height: 300px;
+  }
+  
+  .conceptGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 20px 16px;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .conceptGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.solidPrinciples {
+  margin-top: 60px;
+  padding: 0 24px 60px;
+}
+
+.solidSection {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.darkSection {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}
+
+.solidTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.darkSection .solidTitle {
+  color: #f7fafc;
+}
+
+.solidDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #334155;
+  margin-bottom: 40px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.darkSection .solidDescription {
+  color: #f1f5f9;
+}
+
+.solidPrinciplesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.solidPrinciple {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.darkSection .solidPrinciple {
+  background-color: rgba(45, 55, 72, 0.6);
+}
+
+.solidPrinciple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.solidLetter {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #4299e1;
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.3);
+}
+
+.solidPrinciple:nth-child(1) .solidLetter {
+  background-color: #f56565;
+  box-shadow: 0 4px 6px rgba(245, 101, 101, 0.3);
+}
+
+.solidPrinciple:nth-child(2) .solidLetter {
+  background-color: #ed8936;
+  box-shadow: 0 4px 6px rgba(237, 137, 54, 0.3);
+}
+
+.solidPrinciple:nth-child(3) .solidLetter {
+  background-color: #48bb78;
+  box-shadow: 0 4px 6px rgba(72, 187, 120, 0.3);
+}
+
+.solidPrinciple:nth-child(4) .solidLetter {
+  background-color: #4299e1;
+  box-shadow: 0 4px 6px rgba(66, 153, 225, 0.3);
+}
+
+.solidPrinciple:nth-child(5) .solidLetter {
+  background-color: #9f7aea;
+  box-shadow: 0 4px 6px rgba(159, 122, 234, 0.3);
+}
+
+.solidPrincipleText {
+  flex: 1;
+}
+
+.solidPrincipleText h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.darkSection .solidPrincipleText h3 {
+  color: #f7fafc;
+}
+
+.solidPrincipleText p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.darkSection .solidPrincipleText p {
+  color: #f1f5f9;
+}
+
+@media (max-width: 768px) {
+  .solidPrinciple {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .solidPrincipleText h3 {
+    margin-top: 12px;
+  }
+}
+
+/* Kavramlara Dön butonu için özel stil */
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.detailContainer .backButton {
+  margin-top: 10px;
+} 

@@ -9,6 +9,11 @@
   --success: #48bb78;
   --warning: #f6ad55;
   --error: #f56565;
+  --blue-color: #3b82f6;
+  --yellow-color: #f59e0b;
+  --orange-color: #f97316;
+  --primary-color: #20B2AA;
+  --primary-dark-color: #008b85;
 }
 
 @media (prefers-color-scheme: dark) {
