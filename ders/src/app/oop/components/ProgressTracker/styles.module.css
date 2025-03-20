@@ -244,15 +244,13 @@
     position: fixed;
     height: 100vh;
     max-height: 100vh;
-    transition: all 0.3s ease-in-out;
-    visibility: visible;
+    transition: right 0.3s ease; /* Sadece right değeri için smooth transition */
     z-index: 150;
-    will-change: right; /* Performans iyileştirmesi */
   }
   
   /* Sidebar'ı göster - menuOpen durumunda */
   .sidebarOpen {
-    right: 0 !important;
+    right: 0 !important; /* Görünür hale getir */
   }
   
   .sidebarTitle {
