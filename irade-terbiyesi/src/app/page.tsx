@@ -76,8 +76,8 @@ export default function Home() {
                   <li>Allah ile bağı güçlendirir</li>
                 </ul>
                 <p>
-                  <strong>Öneri:</strong> Günde en az 100 defa "Sübhanallah, Elhamdülillah, 
-                  Allahu Ekber" zikrini çekin. Namazlardan sonra tesbih çekmeyi alışkanlık haline getirin.
+                  <strong>Öneri:</strong> Günde en az 100 defa &quot;Sübhanallah, Elhamdülillah, 
+                  Allahu Ekber&quot; zikrini çekin. Namazlardan sonra tesbih çekmeyi alışkanlık haline getirin.
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function Home() {
                 
                 <div className={styles.sunnetItem}>
                   <h4>🤫 Az Konuşmak</h4>
-                  <p>"Kim Allah&apos;a ve ahiret gününe inanıyorsa, ya hayır söylesin ya da sussun." (Buhari). Gereksiz, boş ve faydasız konuşmalardan uzak durmak gerekmektedir.</p>
+                  <p>&quot;Kim Allah&apos;a ve ahiret gününe inanıyorsa, ya hayır söylesin ya da sussun.&quot; (Buhari). Gereksiz, boş ve faydasız konuşmalardan uzak durmak gerekmektedir.</p>
                 </div>
                 
                 <div className={styles.sunnetItem}>
@@ -128,7 +128,7 @@ export default function Home() {
                 
                 <div className={styles.sunnetItem}>
                   <h4>🍽️ Az Yemek</h4>
-                  <p>"Ademoğlu midesinden daha şerli bir kap doldurmamıştır. Oysaki kişiye belini doğrultacak birkaç lokma yeterlidir." (Tirmizi). Az yemek sağlık için de faydalıdır.</p>
+                  <p>&quot;Ademoğlu midesinden daha şerli bir kap doldurmamıştır. Oysaki kişiye belini doğrultacak birkaç lokma yeterlidir.&quot; (Tirmizi). Az yemek sağlık için de faydalıdır.</p>
                 </div>
                 
                 <div className={styles.sunnetItem}>
@@ -138,12 +138,12 @@ export default function Home() {
                 
                 <div className={styles.sunnetItem}>
                   <h4>⏳ Sabretmek</h4>
-                  <p>"Şüphesiz Allah sabredenlerle beraberdir." (Bakara, 153). Zorluklara karşı sabır göstermek mümin kişinin özelliklerindendir.</p>
+                  <p>&quot;Şüphesiz Allah sabredenlerle beraberdir.&quot; (Bakara, 153). Zorluklara karşı sabır göstermek mümin kişinin özelliklerindendir.</p>
                 </div>
                 
                 <div className={styles.sunnetItem}>
                   <h4>🕊️ Ölümü Hatırlamak</h4>
-                  <p>"Lezzetleri kesip atan ölümü çok hatırlayın." (Tirmizi). Ölümü düşünmek, insanı daha bilinçli yaşamaya sevk eder.</p>
+                  <p>&quot;Lezzetleri kesip atan ölümü çok hatırlayın.&quot; (Tirmizi). Ölümü düşünmek, insanı daha bilinçli yaşamaya sevk eder.</p>
                 </div>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function Home() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Müslüman Gencin Zaman Bilinci</h2>
             <p className={styles.intro}>
-              "Asra yemin olsun ki, insan gerçekten ziyan içindedir." (Asr Suresi)
+              &quot;Asra yemin olsun ki, insan gerçekten ziyan içindedir.&quot; (Asr Suresi)
               Zaman, Allah&apos;ın insana verdiği en değerli sermayedir. Vaktin kıymetini
               bilmek ve onu en verimli şekilde değerlendirmek her Müslümanın görevidir.
             </p>
@@ -163,8 +163,8 @@ export default function Home() {
               <h3>Zamanın Önemi</h3>
               <p>
                 Zaman geri dönmeyen, telafisi olmayan bir nimettir. Hz. Ömer (r.a.) 
-                "Bugünün işini yarına bırakmayın, yoksa işler birikir ve altından 
-                kalkamazsınız" buyurmuştur. İslam&apos;da her anı değerlendirmek esastır.
+                &quot;Bugünün işini yarına bırakmayın, yoksa işler birikir ve altından 
+                kalkamazsınız&quot; buyurmuştur. İslam&apos;da her anı değerlendirmek esastır.
               </p>
             </div>
 
@@ -248,8 +248,8 @@ export default function Home() {
             <div className={styles.infoBlock}>
               <h3>Manevi Gelişim İçin Önerilen Kaynaklar</h3>
               <p>
-                İmam Gazali&apos;nin "İhya-u Ulumu&apos;d-Din", İbn Kayyım el-Cevziyye&apos;nin "Medaricu&apos;s-Salikin"
-                ve Said Nursi&apos;nin "Risale-i Nur Külliyatı" gibi eserler manevi gelişim için okunabilir.
+                İmam Gazali&apos;nin &quot;İhya-u Ulumu&apos;d-Din&quot;, İbn Kayyım el-Cevziyye&apos;nin &quot;Medaricu&apos;s-Salikin&quot;
+                ve Said Nursi&apos;nin &quot;Risale-i Nur Külliyatı&quot; gibi eserler manevi gelişim için okunabilir.
               </p>
         </div>
           </section>
