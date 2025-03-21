@@ -38,7 +38,7 @@ export default function Home() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Nefis Terbiyesi ve İrade Kontrolü</h2>
             <p className={styles.intro}>
-              Nefis terbiyesi, İslam'da kişinin kendi nefsini dizginlemesi, 
+              Nefis terbiyesi, İslam&apos;da kişinin kendi nefsini dizginlemesi, 
               kontrol etmesi ve onu olgunlaştırmasıdır. Bu yolda ilerlemek için 
               üç temel uygulama alanı ve bazı sünnetler vardır.
             </p>
@@ -53,7 +53,7 @@ export default function Home() {
                 <ul className={styles.bulletList}>
                   <li>Kalbi rahatlatır ve huzur verir</li>
                   <li>Doğru ile yanlışı ayırt etme yeteneğini geliştirir</li>
-                  <li>Allah'ın mesajını anlamaya yardımcı olur</li>
+                  <li>Allah&apos;ın mesajını anlamaya yardımcı olur</li>
                   <li>Karakteri olgunlaştırır</li>
                 </ul>
                 <p>
@@ -67,7 +67,7 @@ export default function Home() {
               <h3 className={styles.practiceTitle}>2. Zikir Yapmak</h3>
               <div className={styles.practiceContent}>
                 <p>
-                  Zikir, Allah'ı anmak ve O'nu hatırlamaktır. Düzenli zikir:
+                  Zikir, Allah&apos;ı anmak ve O&apos;nu hatırlamaktır. Düzenli zikir:
                 </p>
                 <ul className={styles.bulletList}>
                   <li>Kalbi arındırır</li>
@@ -92,7 +92,7 @@ export default function Home() {
                   <li>Cimrilik hastalığından korur</li>
                   <li>Malı bereketlendirir</li>
                   <li>Toplumsal dayanışmayı güçlendirir</li>
-                  <li>Allah'ın rızasını kazandırır</li>
+                  <li>Allah&apos;ın rızasını kazandırır</li>
                 </ul>
                 <p>
                   <strong>Öneri:</strong> Her ay düzenli olarak gelirinizin bir kısmını ihtiyaç sahiplerine ayırın.
@@ -103,7 +103,7 @@ export default function Home() {
 
             <div className={styles.sunnetSection}>
               <h3 className={styles.sunnetTitle}>Günlük Sünnetler</h3>
-              <p>Sünnetler, Peygamber Efendimiz'in (s.a.v.) hayatında uyguladığı ve bizlere tavsiye ettiği davranışlardır.</p>
+              <p>Sünnetler, Peygamber Efendimiz&apos;in (s.a.v.) hayatında uyguladığı ve bizlere tavsiye ettiği davranışlardır.</p>
               
               <div className={styles.sunnetList}>
                 <div className={styles.sunnetItem}>
@@ -118,7 +118,7 @@ export default function Home() {
                 
                 <div className={styles.sunnetItem}>
                   <h4>🤫 Az Konuşmak</h4>
-                  <p>"Kim Allah'a ve ahiret gününe inanıyorsa, ya hayır söylesin ya da sussun." (Buhari). Gereksiz, boş ve faydasız konuşmalardan uzak durmak gerekmektedir.</p>
+                  <p>"Kim Allah&apos;a ve ahiret gününe inanıyorsa, ya hayır söylesin ya da sussun." (Buhari). Gereksiz, boş ve faydasız konuşmalardan uzak durmak gerekmektedir.</p>
                 </div>
                 
                 <div className={styles.sunnetItem}>
@@ -155,7 +155,7 @@ export default function Home() {
             <h2 className={styles.sectionTitle}>Müslüman Gencin Zaman Bilinci</h2>
             <p className={styles.intro}>
               "Asra yemin olsun ki, insan gerçekten ziyan içindedir." (Asr Suresi)
-              Zaman, Allah'ın insana verdiği en değerli sermayedir. Vaktin kıymetini
+              Zaman, Allah&apos;ın insana verdiği en değerli sermayedir. Vaktin kıymetini
               bilmek ve onu en verimli şekilde değerlendirmek her Müslümanın görevidir.
             </p>
 
@@ -164,7 +164,7 @@ export default function Home() {
               <p>
                 Zaman geri dönmeyen, telafisi olmayan bir nimettir. Hz. Ömer (r.a.) 
                 "Bugünün işini yarına bırakmayın, yoksa işler birikir ve altından 
-                kalkamazsınız" buyurmuştur. İslam'da her anı değerlendirmek esastır.
+                kalkamazsınız" buyurmuştur. İslam&apos;da her anı değerlendirmek esastır.
               </p>
             </div>
 
@@ -192,7 +192,7 @@ export default function Home() {
                 <li>Günlük görevleri öncelik sırasına koymak</li>
                 <li>Nafile ibadetler için özel zaman ayırmak</li>
                 <li>İlim öğrenmek için düzenli okuma saatleri belirlemek</li>
-                <li>Her gün Kur'an-ı Kerim okumaya zaman ayırmak</li>
+                <li>Her gün Kur&apos;an-ı Kerim okumaya zaman ayırmak</li>
                 <li>Yatmadan önce günü muhasebe etmek</li>
               </ul>
             </div>
@@ -223,7 +223,7 @@ export default function Home() {
               <h3>Haftalık Manevi Program</h3>
               <ul className={styles.bulletList}>
                 <li><strong>Pazartesi-Perşembe:</strong> Nafile oruç tutmak</li>
-                <li><strong>Cuma:</strong> Cuma namazına erken gitmek, Kehf Suresi'ni okumak</li>
+                <li><strong>Cuma:</strong> Cuma namazına erken gitmek, Kehf Suresi&apos;ni okumak</li>
                 <li><strong>Hafta Sonu:</strong> İlim meclislerine katılmak</li>
                 <li><strong>Haftada bir gün:</strong> Muhasebe günü belirlemek</li>
               </ul>
@@ -248,8 +248,8 @@ export default function Home() {
             <div className={styles.infoBlock}>
               <h3>Manevi Gelişim İçin Önerilen Kaynaklar</h3>
               <p>
-                İmam Gazali'nin "İhya-u Ulumu'd-Din", İbn Kayyım el-Cevziyye'nin "Medaricu's-Salikin"
-                ve Said Nursi'nin "Risale-i Nur Külliyatı" gibi eserler manevi gelişim için okunabilir.
+                İmam Gazali&apos;nin "İhya-u Ulumu&apos;d-Din", İbn Kayyım el-Cevziyye&apos;nin "Medaricu&apos;s-Salikin"
+                ve Said Nursi&apos;nin "Risale-i Nur Külliyatı" gibi eserler manevi gelişim için okunabilir.
               </p>
         </div>
           </section>
