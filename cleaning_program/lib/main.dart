@@ -1,17 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'views/todo_screen.dart';
 import 'view_models/todo_viewmodel.dart';
+import 'models/statistics_model.dart';
 import 'calendar_view.dart';
+
+// Bildirim servisi için global değişken
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Flutter engine'ini başlatmak için
   tz_data.initializeTimeZones(); // Saat dilimi verilerini başlat
   
+  // Bildirim servisini başlat
+  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
+  const InitializationSettings initializationSettings = InitializationSettings(android: initializationSettingsAndroid);
+  await flutterLocalNotificationsPlugin.initialize(
+    initializationSettings,
+    onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) {
+      // Bildirime tıklandığında yapılacak işlemler
+    },
+  );
+  
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => TodoViewModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TodoViewModel()),
+        ChangeNotifierProvider(create: (context) => StatisticsModel()),
+      ],
       child: const CleaningApp(),
     ),
   );
